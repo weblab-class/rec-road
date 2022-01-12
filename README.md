@@ -1,3 +1,22 @@
+# Stuff to Implement
+1. Home/feed page
+2. NavBar
+3. Scrape course descriptions, ratings, and pictures from Student Catalog, FireHose, and OCW
+4. Search bar
+5. Upvote/downvote system
+6. Feed recommending algorithm
+7. Profile page
+8. Results page
+9. History page to store and display past votes
+10. Sidebar with settings that are saved after each session
+11. Autoscroll + autoscroll toggle
+12. Pre-choose classes
+13. Result recommending algorithm
+14. Login with Touchstone/Integration with Canvas (not sure if these will be the same system/can students login to our website without connecting to Canvas?)
+15. Export to FireRoad
+16. Friend page/system
+17. A few more stylistic choices
+
 # How to code a webapp with this skeleton
 
 ## Initial setup
