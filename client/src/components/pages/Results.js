@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import Card from "../modules/Card.js";
-import { NewStory } from "../modules/NewPostInput.js";
 
 import { get } from "../../utilities";
 
@@ -18,11 +17,7 @@ const Results = (props) => {
     });
   }, []);
 
-  // this gets called when the user pushes "Submit", so their
-  // post gets added to the screen right away
-  const addNewStory = (storyObj) => {
-    setStories([storyObj].concat(stories));
-  };
+
 
   let storiesList = null;
   const hasStories = stories.length !== 0;

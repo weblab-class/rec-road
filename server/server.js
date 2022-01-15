@@ -33,9 +33,13 @@ const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = "mongodb+srv://wfli2:mcdonalds@cluster0.jzjks.mongodb.net/mickiesDB?retryWrites=true&w=majority";
+//const mongoConnectionURL = "mongodb+srv://wfli3:m@cluster0.jzjks.mongodb.net/test?retryWrites=true&w=majority";
+//const mongoConnectionURL = "mongodb+srv://weblab:jAT4po55IAgYWQgR@catbook-ylndp.mongodb.net/test?retryWrites=true&w=majority"
+const mongoConnectionURL = "mongodb+srv://bill:123@cluster0.jzjks.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
+
 // TODO change database name to the name you chose
-const databaseName = "mickiesDB";
+const databaseName = "myFirstDatabase";
 
 // connect to mongodb
 mongoose

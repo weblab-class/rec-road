@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SingleStory from "./SingleStory.js";
-import CommentsBlock from "./CommentsBlock.js";
 import { get } from "../../utilities";
 
 import "./Card.css";
@@ -37,13 +36,7 @@ const Card = (props) => {
         creator_id={props.creator_id}
         content={props.content}
       />
-      <CommentsBlock
-        story={props}
-        comments={comments}
-        creator_id={props.creator_id}
-        userId={props.userId}
-        addNewComment={addNewComment}
-      />
+
     </div>
   );
 };
