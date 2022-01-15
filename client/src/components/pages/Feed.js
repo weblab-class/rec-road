@@ -13,12 +13,10 @@ const Feed = (props) => {
   useEffect(() => {
     document.title = "Course Feed";
   }, []);
-
-
   
   return (
     <>
-    <FeedSideBar/>
+     <FeedSideBar/>
     <CentralFeed/>
     </>
   );
