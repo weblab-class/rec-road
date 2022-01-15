@@ -7,6 +7,7 @@ import Friends from "./pages/Friends.js"
 import Feed from "./pages/Feed.js";
 import Profile from "./pages/Profile.js";
 import Results from "./pages/Results.js";
+import Login from "./pages/Login.js";
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
@@ -19,14 +20,14 @@ import { get, post } from "../utilities";
 const App = () => {
   const [userId, setUserId] = useState(undefined);
 
-  useEffect(() => {
-    get("/api/whoami").then((user) => {
-      if (user._id) {
-        // they are registed in the database, and currently logged in.
-        setUserId(user._id);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   get("/api/whoami").then((user) => {
+  //     if (user._id) {
+  //       // they are registed in the database, and currently logged in.
+  //       setUserId(user._id);
+  //     }
+  //   });
+  // }, []);
 
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
@@ -55,6 +56,7 @@ const App = () => {
           <Profile path="/profile:userID"/>
           <Results path="/results/" userID={userId}/>
           <Friends path="/friends/" userID={userId}/>
+          <Login path="/login/" userID={userId} handleLogin={handleLogin} handleLogout={handleLogout}/>
           <PageNotFound default />
         </Router>
       </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Card from "../modules/Card.js";
-import { NewStory } from "../modules/NewPostInput.js";
 
 import { get } from "../../utilities";
 
@@ -11,17 +10,12 @@ const Feed = (props) => {
   // when it shows up on screen
   useEffect(() => {
     document.title = "News Feed";
-    get("/api/stories").then((storyObjs) => {
+    get("/api/classes").then((storyObjs) => {
       let reversedStoryObjs = storyObjs.reverse();
       setStories(reversedStoryObjs);
     });
   }, []);
 
-  // this gets called when the user pushes "Submit", so their
-  // post gets added to the screen right away
-  const addNewStory = (storyObj) => {
-    setStories([storyObj].concat(stories));
-  };
 
   let storiesList = null;
   const hasStories = stories.length !== 0;
@@ -41,7 +35,6 @@ const Feed = (props) => {
   }
   return (
     <>
-      {props.userId && <NewStory addNewStory={addNewStory} />}
       {storiesList}
     </>
   );
