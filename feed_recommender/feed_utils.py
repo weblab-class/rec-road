@@ -21,6 +21,11 @@ def init_classes(prev_classes):
     for key in classes:
         neighbor_score[key] = np.mean([weights['votes']*votes[neighbor]+weights['prev classes']*prev_class_scores[neighbor] for neighbor in adj[key]])/0.4
     return course_evals, votes, prev_class_scores, neighbor_score
-    
 
+
+#const init_classes = (prev_classes) => {
+#}
+
+    
+def compute_score(upvoted_class, )
 
