@@ -54,7 +54,7 @@ const App = () => {
         <Router>
           <Feed path="/" userId={userId} />
           <Profile path="/profile:userID"/>
-          <Results path="/results/" userID={userId}/>
+          <Results path="/results/" userID={userId} results={["hi", "hello", "howdy"]}/>
           <Friends path="/friends/" userID={userId}/>
           <Login path="/login/" userID={userId} handleLogin={handleLogin} handleLogout={handleLogout}/>
           <PageNotFound default />

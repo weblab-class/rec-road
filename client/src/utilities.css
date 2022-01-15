@@ -24,7 +24,7 @@
   --checkbox: #ffcd1d;
   --button-orange: #ffb13d;
   --button-grapefruit: #ff8761;
-  --background: #efefef;
+  --background: #F9E9B9;
   --darkgrey: #d4d4d4;
   --medgrey: #e0e0e0;
   --black: #000000;
@@ -42,7 +42,7 @@ body {
   padding: 0;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  background-color: var(--primary);
+  background-color: var(--background);
 }
 
 form {
