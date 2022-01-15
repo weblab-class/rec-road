@@ -49,8 +49,7 @@ const App = () => {
       <NavBar handleLogin={handleLogin}
         handleLogout={handleLogout}
         userId={userId}
-        
-      NavBar/>
+      />
       <div>
         <Router>
           <Feed path="/" userId={userId} />
