@@ -12,7 +12,7 @@ import "../../utilities.css"
 const ComponentHead = (props) => {
     return (
         <div className="ComponentHead-container u-bold">
-            props.content
+            {props.content}
         </div>
     )
 }
