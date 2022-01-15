@@ -27,6 +27,9 @@ const App = () => {
   //     }
   //   });
   // }, []);
+  useEffect(()=>{
+    document.title = "Rec Road"
+  }, [])
 
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
