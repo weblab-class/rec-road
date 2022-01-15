@@ -36,7 +36,15 @@ const NavBar = (props) => {
             Results
           </Link> 
         )}
-        
+        {props.userId ? (
+          <Link to="/history/" className="NavBar-link">
+            History
+          </Link>
+        ) : (
+          <Link to="/history/" className="NavBar-link">
+            History
+          </Link>
+        )}
         {props.userId ? (<Link to="/friends/" className="NavBar-link">
           Friends
         </Link>) : (
@@ -44,15 +52,7 @@ const NavBar = (props) => {
             Friends
           </Link>
         )}
-        {props.userId ? (
-          <Link to="/logout/" className="NavBar-link">
-            Log out
-          </Link>
-        ) : (
-          <Link to="/login/" className="NavBar-link">
-            Log in
-          </Link>
-        )}
+        
         {props.userId ? (
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}

@@ -10,7 +10,6 @@ import Results from "./pages/Results.js";
 import Login from "./pages/Login.js";
 import "../utilities.css";
 
-import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
 
@@ -32,10 +31,12 @@ const App = () => {
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
+    console.log(`User token is ${userToken}`)
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
-      post("/api/initsocket", { socketid: socket.id });
+      console.log(`User ID is ${user._id}`)
     });
+    
   };
 
   const handleLogout = () => {
@@ -45,18 +46,19 @@ const App = () => {
 
   return (
     <>
-      <NavBar>
-        handleLogin={handleLogin}
+      <NavBar handleLogin={handleLogin}
         handleLogout={handleLogout}
         userId={userId}
-      </NavBar>
+        
+      NavBar/>
       <div>
         <Router>
           <Feed path="/" userId={userId} />
-          <Profile path="/profile:userID"/>
-          <Results path="/results/" userID={userId} results={["hi", "hello", "howdy"]}/>
-          <Friends path="/friends/" userID={userId}/>
-          <Login path="/login/" userID={userId} handleLogin={handleLogin} handleLogout={handleLogout}/>
+          <Profile path="/profile:userId"/>
+          <Results path="/results/" userId={userId} results={["hi", "hello", "howdy"]}/>
+          <Friends path="/friends/" userIdd={userId}/>
+          <Login path="/login/" userId={userId} handleLogin={handleLogin} handleLogout={handleLogout}/>
+          <History path="/history/" userId={userId}></History>
           <PageNotFound default />
         </Router>
       </div>

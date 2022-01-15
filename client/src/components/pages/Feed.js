@@ -10,7 +10,7 @@ const Feed = (props) => {
   // when it shows up on screen
   useEffect(() => {
     document.title = "News Feed";
-    get("/api/classes").then((storyObjs) => {
+    get("/api/stories").then((storyObjs) => {
       let reversedStoryObjs = storyObjs.reverse();
       setStories(reversedStoryObjs);
     });
