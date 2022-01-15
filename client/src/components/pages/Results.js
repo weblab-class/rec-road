@@ -9,18 +9,23 @@ const GOOGLE_CLIENT_ID = "177936818185-slf1osqsnja2cdhmfm1g8qlj8qk0f4f9.apps.goo
 const Results = (props) => {
 
   return (
-    <>
-      
-      <h1>Here are your recommended classes for spring 2022!</h1>
-      <h2>
-      <ol>
-        {props.results.map(result => (<li>{result}</li>))}
-      </ol></h2>
-      
+
+    {props.results.map(result => (<div>{result}</div>))}
+    <ComponentHead>
+      <SingleStory
+        _id={props._id}
+        creator_name={props.creator_name}
+        creator_id={props.creator_id}
+        content={props.content}
+      />
+
+    </div>
 
 
-    </>
   );
 };
 
 export default Results;
+
+
+
