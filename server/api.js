@@ -26,6 +26,10 @@ router.get("/stories", (req, res) => {
   res.send(["6.006", "6.009"])
 });
 
+router.get("/userparams", (req, res) => {
+  res.send([{prompt:"Do you want a Hass?", value:true}, {prompt:60.0, value:30.0}])
+});
+
 router.post("/story", auth.ensureLoggedIn, (req, res) => {
   const newStory = new Story({
     creator_id: req.user._id,
