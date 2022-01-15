@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
-import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
-
+import NavBar from "./modules/NavBar.js";
+import PageNotFound from "./pages/NotFound.js";
+//import Skeleton from "./pages/Skeleton.js";
+import Friends from "./pages/Friends.js"
+import Feed from "./pages/Feed.js";
+import Profile from "./pages/Profile.js";
+import Results from "./pages/Results.js";
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
@@ -40,10 +44,20 @@ const App = () => {
 
   return (
     <>
-      <Router>
-        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-        <NotFound default />
-      </Router>
+      <NavBar>
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+        userId={userId}
+      </NavBar>
+      <div>
+        <Router>
+          <Feed path="/" userId={userId} />
+          <Profile path="/profile:userID"/>
+          <Results path="/results/" userID={userId}/>
+          <Friends path="/friends/" userID={userId}/>
+          <PageNotFound default />
+        </Router>
+      </div>
     </>
   );
 };
