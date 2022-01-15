@@ -22,7 +22,8 @@ const router = express.Router();
 
 router.get("/stories", (req, res) => {
   // empty selector means get all documents
-  Story.find({}).then((stories) => res.send(stories));
+  //Story.find({}).then((stories) => res.send(stories));
+  res.send(["6.006", "6.009"])
 });
 
 router.post("/story", auth.ensureLoggedIn, (req, res) => {
