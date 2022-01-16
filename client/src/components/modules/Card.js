@@ -8,23 +8,24 @@ import "./Card.css";
  * Card is a component for displaying content like stories
  *
  * Proptypes
- * @param {string} _id of the story
- * @param {string} creator_name
- * @param {string} creator_id
- * @param {string} content of the story
+ * @param {string} course_id of the story
+ * @param {string} course_name
+ * @param {string} description
+ * @param {string} hours of the story
+ * @param {string} credits of the story
+ * @param {string} eval of the story
  */
 const Card = (props) => {
-
-
   return (
     <div className="Card-container">
       <SingleStory
-        _id={props._id}
-        creator_name={props.creator_name}
-        creator_id={props.creator_id}
-        content={props.content}
+        course_id={props.course_id}
+        course_name={props.course_name}
+        description={props.description}
+        hours={props.hours}
+        credits={props.credits}
+        eval={props.eval}
       />
-
     </div>
   );
 };

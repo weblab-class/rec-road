@@ -88,7 +88,7 @@ form {
 }
 
 .u-link {
-  color: var(--primary);
+  color: var(--black);
   text-decoration: none;
   cursor: pointer;
 }
