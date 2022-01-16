@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
 import { post } from "../utilities";
-import {classData} from "./full"
+//import {classData} from "./full"
 import axios from  'axios'
 
 
