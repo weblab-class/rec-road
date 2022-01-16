@@ -9,19 +9,23 @@ const useCourseSearch = (query, pageNumber) => {
     const [hasMore, setHasMore] = useState(false)
 
     useEffect(()=>{
+        setCourses([])
+    }, [query])
+
+    useEffect(()=>{
         setLoading(true)
         setError(false)
         let cancel
         axios(
             {
                method:"GET",
-               url: 'http://openlibrary.org/search.json',
-               params: {q:query, page:pageNumber} , 
+               url: 'https://fireroad-dev.mit.edu/courses/all',
+               //params: {q:query, page:pageNumber} , 
                cancelToken: new axios.CancelToken(c => cancel=c)
             }
         ).then(res =>{
             setCourses(prevCourses => {
-                return [...new Set([...prevCourses, res.data.docs.map(b => b.title)])]
+                return [...new Set([...prevCourses, ...res.data.map(b => b.title)])]
             })
             setHasMore(res.data.docs.length > 0)
             setLoading(false)
