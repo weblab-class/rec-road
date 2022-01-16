@@ -36,7 +36,9 @@ const App = () => {
   }, [])
 
   useEffect(()=>{
-
+    get("/api/stories").then((stories) => {
+      console.log(stories)
+    })
   }, [])
 
   const handleLogin = (res) => {

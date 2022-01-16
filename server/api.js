@@ -37,11 +37,14 @@ router.get("/userparams", (req, res) => {
   res.send([{prompt:"Do you want a Hass?", value:true}, {prompt:60.0, value:30.0}])
 });
 
-router.post("/story", auth.ensureLoggedIn, (req, res) => {
+router.post("/story", (req, res) => {
   const newStory = new Story({
-    creator_id: req.user._id,
-    creator_name: req.user.name,
-    content: req.body.content,
+    course_id: req.body.course_id,
+    course_name: req.body.course_name,
+    description: req.body.description,
+    hours: req.body.hours,
+    credits: req.body.credits,
+    eval: req.body.eval
   });
 
   newStory.save().then((story) => res.send(story));

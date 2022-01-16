@@ -10,10 +10,10 @@ const add_classes = ()  => {
     
     useEffect(() =>{
         setCount(count+1)
-        console.log(courses.data[0])
-        console.log(count)
+        //console.log(courses.data[0])
+        //console.log(count)
         if (count === 1) {
-        for (let i = 0; i < courses.data.length; i++) {
+        for (let i = 0; i < 5; i++) {
             const body = {course_id: courses.data[i].subject_id,
                 course_name: courses.data[i].title,
                 description: courses.data[i].description,
@@ -21,8 +21,8 @@ const add_classes = ()  => {
                 credits: courses.data[i].total_units,
                 eval: courses.data[i].rating}
 
-            //post('/api/story', body)
-            console.log(body.course_id)
+            post('/api/story', body)
+            //console.log(body.course_id)
           }
         }
     }, [courses])
