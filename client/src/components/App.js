@@ -29,7 +29,7 @@ const App = () => {
     });
   }, []);
 
-  add_classes()
+  //add_classes()
 
   useEffect(()=>{
     document.title = "Rec Road"
