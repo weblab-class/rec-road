@@ -5,19 +5,9 @@ import { get } from "../../utilities";
 import useCourseSearch from "./useCourseSearch.js";
 
 const CentralFeed = () => {
-  //const [stories, setStories] = useState([]);
+  const [stories, setStories] = useState([]);
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
-
-  /*useEffect(() => {
-    get("/api/stories").then((storyObjs) => {
-      setStories(storyObjs);
-    });
-  }, []);
-
-  useEffect(() => {
-    console.log(stories);
-  }, [stories]);*/
 
   const { courses, hasMore, loading, error } = useCourseSearch(query, pageNumber);
 
@@ -42,12 +32,48 @@ const CentralFeed = () => {
     setPageNumber(1);
   };
 
-  // useEffect(() => {
-  //     get("/api/stories").then((storyObjs) => {
-  //       setStories(storyObjs);
-  //     });
-  //   }, []);
-  return (
+  useEffect(() => {
+    get("/api/stories").then((storyObjs) => {
+      setStories(storyObjs);
+    });
+  }, []);
+
+  /*useEffect(() => {
+    console.log(stories);
+  }, [stories]);*/
+
+  let storiesList = null;
+  const hasStories = stories.length !== 0;
+  if (hasStories) {
+    storiesList = stories.map((storyObj) => (
+      <Card
+        key={storyObj.course_id}
+        _id={storyObj.eval}
+        creator_name={storyObj.course_name}
+        content={storyObj.description}
+      />
+
+      /*course_id: String,
+  course_name: String,
+  description: String,
+  hours: Number,
+  credits: Number,
+  eval: Number*/
+    ));
+  } else {
+    storiesList = <div>{loading && "Loading..."}</div>;
+  }
+
+  /* TURN THESE INTO CARDS
+        do a for loop and pass each course (story) into its own card
+        and make an html card with that
+        use component header for the title
+        format css for the component header
+        */
+
+  return <div>{storiesList}</div>;
+
+  /*return (
     <div class="u-textCenter">
       <input type="text" value={query} onChange={handleSearch}></input>
       <link rel="stylesheet" href="../../utilities.css" />
@@ -67,7 +93,7 @@ const CentralFeed = () => {
       <div>{loading && "Loading..."}</div>
       <div>{error && "Error..."}</div>
     </div>
-  );
+  );*/
 };
 
 export default CentralFeed;
