@@ -10,7 +10,7 @@ import "../../utilities.css";
 const MissingPrereq = (props) => {
 
   return (
-
+    // <div className="Card-container">
     // {props.results.map(result => (<div>{result}</div>))}
     // <ComponentHead>
     //   <SingleStory
