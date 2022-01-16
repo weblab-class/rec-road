@@ -5,7 +5,6 @@ const StorySchema = new mongoose.Schema({
   course_id: String,
   course_name: String,
   description: String,
-  score: Number,
   hours: Number,
   credits: Number,
   eval: Number
