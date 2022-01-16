@@ -8,6 +8,7 @@ import Feed from "./pages/Feed.js";
 import Profile from "./pages/Profile.js";
 import Results from "./pages/Results.js";
 import Login from "./pages/Login.js";
+import add_classes from "./add_classes.js";
 import "../utilities.css";
 
 
@@ -19,16 +20,23 @@ import { get, post } from "../utilities";
 const App = () => {
   const [userId, setUserId] = useState(undefined);
 
-  // useEffect(() => {
-  //   get("/api/whoami").then((user) => {
-  //     if (user._id) {
-  //       // they are registed in the database, and currently logged in.
-  //       setUserId(user._id);
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    get("/api/whoami").then((user) => {
+      if (user._id) {
+        // they are registed in the database, and currently logged in.
+        setUserId(user._id);
+      }
+    });
+  }, []);
+
+  add_classes()
+
   useEffect(()=>{
     document.title = "Rec Road"
+  }, [])
+
+  useEffect(()=>{
+
   }, [])
 
   const handleLogin = (res) => {
