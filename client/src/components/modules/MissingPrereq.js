@@ -9,8 +9,8 @@ import "./MissingPrereq.css";
  * MissingPrereq is a box in the right sidebar that lists the missing prereqs
  *
  * Proptypes
- * @param {dict} classes list of dictionaries, should contain a list of classes (the scheduled classes, not prereqs),
- *                            each dictionary should have keys class.prompt and class.prereq (lists the prereqs)
+ * @param {list} classes list of dictionaries, should contain a list of classes (the scheduled classes, not prereqs),
+ *                            each dictionary should have keys class.prompt and class.prereqs (lists the prereqs)
  *                       
  */
 
@@ -20,12 +20,12 @@ const MissingPrereq = (props) => {
     return (
       <>
         <ComponentHead
-          topic_header={"Missing Prerequisites"}
+          content={"Missing Prerequisites"}
         />
         {props.classes.map((class) => (
           <PrereqBrief
-            course_id={class.prompt}
-            prereq={class.prereq}
+            prompt={class.prompt}
+            prereqs={class.prereqs}
           />
         ))}
   

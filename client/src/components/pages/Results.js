@@ -17,8 +17,7 @@ const Results = (props) => {
     //     creator_id={props.creator_id}
     //     content={props.content}
     //   />
-    hi
-
+    <p>hi</p>
 
 
   );

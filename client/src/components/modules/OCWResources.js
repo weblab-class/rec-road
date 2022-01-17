@@ -9,7 +9,7 @@ import "./OCWResources.css";
  * OCWResources is a box in the right sidebar that lists the OCW links for the recommended classes
  *
  * Proptypes
- * @param {dict} classes list of dictionaries, should contain a list of classes,
+ * @param {list} classes list of dictionaries, should contain a list of classes,
  *                            each dictionary should have keys class.prompt, class.value, and class.link
  *                       
  */
@@ -20,7 +20,7 @@ const OCWResources = (props) => {
     return (
       <>
         <ComponentHead
-          topic_header={"Resources"}
+          content={"Resources"}
         />
         {props.classes.map((class) => (
           <OCWClass

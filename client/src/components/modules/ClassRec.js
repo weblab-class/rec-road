@@ -9,8 +9,8 @@ import "./ClassRec.css";
  * ClassRec is a component that renders each block section of the center column of the Results page
  *
  * Proptypes
- * @param {string} topic_header used in the ComponentHead
- * @param {dict} classes list of dictionaries, should contain a list of classes
+ * @param {string} content used in the ComponentHead
+ * @param {list} classes list of dictionaries, should contain a list of classes
  *                       
  */
 
@@ -20,7 +20,7 @@ const ClassRec = (props) => {
     return (
       <>
         <ComponentHead
-          topic_header={props.topic_header}
+          topic_header={props.content}
         />
         {props.classes.map((class) => (
           <ClassBrief
