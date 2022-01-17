@@ -24,7 +24,7 @@ const ResultRightColumn = (props) => {
         <OCWResources
             classes={props.ocw_links}
         />
-        
+        <p>right</p>
         
   
       </>

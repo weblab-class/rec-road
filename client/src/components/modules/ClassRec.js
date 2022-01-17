@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import ComponentHead from "./ComponentHead.js";
+//import ComponentHead from "./ComponentHead.js";
 import ClassBrief from "./ClassBrief.js";
 import { get } from "../../utilities";
 import "../../utilities.css";
