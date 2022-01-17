@@ -14,11 +14,12 @@ import ComponentHead from "./ComponentHead.js";
  * @param {string} eval of the story
  */
 const SingleStory = (props) => {
+  const temp = props.course_name + " (" + props.course_id + " )";
   return (
     <div>
       <div className="Card-storyTitle">
         <p>
-          <ComponentHead>content = {props.course_name}</ComponentHead>
+          <ComponentHead content={temp} />
         </p>
       </div>
       <div className="Card-storyContent">
