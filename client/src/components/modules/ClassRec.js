@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ComponentHead from "./ComponentHead.js";
 import ClassBrief from "./ClassBrief.js";
 import { get } from "../../utilities";
-
+import "../../utilities.css";
 import "./ClassRec.css";
 
 /**
@@ -10,7 +10,8 @@ import "./ClassRec.css";
  *
  * Proptypes
  * @param {string} topic_header used in the ComponentHead
- * @param {string} creator_name
+ * @param {dict} classes list of dictionaries, should contain a list of classes
+ *                       
  */
 
 const ClassRec = (props) => {
@@ -20,13 +21,15 @@ const ClassRec = (props) => {
       <>
         <ComponentHead
           topic_header={props.topic_header}
-          />
-        <ClassBrief
-          _id={props._id}
-          creator_name={props.creator_name}
-          creator_id={props.creator_id}
-          content={props.content}
         />
+        {props.classes.map((class) => (
+          <ClassBrief
+            course_id={class.prompt}
+            course_name={class.value}
+            hours={class.hours}
+            credits={class.credits}
+          />
+        ))}
   
       </>
     );
