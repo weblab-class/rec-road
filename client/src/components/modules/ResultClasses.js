@@ -17,15 +17,17 @@ const ResultClasses = (props) => {
 
     return (
       <>
-        <ClassRec
-            content={"Saved Classes"}
-            classes={props.rec_classes}
-        />
-        <ClassRec
-            content={"Other Liked Classes"}
-            classes={props.other_classes}
-        />
+        <div className = "u-center-container u-making-column-inside-container">
+          <ClassRec
+              content={"Saved Classes"}
+              classes={props.rec_classes}
+          />
+          <ClassRec
+              content={"Other Liked Classes"}
+              classes={props.other_classes}
+          />
         
+        </div>
         
   
       </>
