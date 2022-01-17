@@ -19,7 +19,9 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  const [scores, setScores] = useState([])
 
+  
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
@@ -29,6 +31,12 @@ const App = () => {
     });
   }, []);
 
+  useEffect(() =>{
+    get("/api/whoami").then((user) => {
+      if (user._id) {
+
+      }
+  }, [userId])
   //add_classes()
 
   useEffect(()=>{

@@ -54,6 +54,7 @@ router.post("/story", (req, res) => {
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
+
 router.get("/whoami", (req, res) => {
   if (!req.user) {
     // not logged in
