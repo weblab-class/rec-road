@@ -4,7 +4,6 @@ import Card from "../modules/Card.js";
 import { get } from "../../utilities";
 import useCourseSearch from "./useCourseSearch.js";
 import "./CentralFeed.css";
-import Vote from "./Vote.js";
 
 const CentralFeed = () => {
   const [stories, setStories] = useState([]);
@@ -44,14 +43,6 @@ const CentralFeed = () => {
     console.log(stories);
   }, [stories]);*/
 
-  const [vote, setVote] = useState("");
-  const like = () => {
-    setVote("Liked");
-  };
-  const dislike = () => {
-    setVote("Disliked");
-  };
-
   let storiesList = null;
   const hasStories = stories.length !== 0;
   if (hasStories) {
@@ -65,19 +56,6 @@ const CentralFeed = () => {
           credits={storyObj.credits}
           eval={storyObj.eval}
         />
-
-        <div class="row">
-          <div className="Feed-buttonContainer column" onClick={like}>
-            <div className="Feed-upbutton" />
-          </div>
-
-          <div className="Feed-buttonContainer column" onClick={dislike}>
-            <div className="Feed-downbutton" />
-          </div>
-        </div>
-        <div>
-          <Vote vote={vote} />
-        </div>
       </div>
     ));
   } else {
