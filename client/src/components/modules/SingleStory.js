@@ -18,23 +18,21 @@ const SingleStory = (props) => {
   return (
     <div>
       <div className="Card-storyTitle">
-        <p>
+        <div>
           <ComponentHead content={temp} />
-        </p>
+        </div>
       </div>
       <div className="Card-storyContent">
-        <p>
-          <b>Units:</b> {props.credits}
-        </p>
-        <p>
-          <b> Hours: </b> {props.hours}
-        </p>
-        <p>
-          <b>Average Rating: </b> {props.eval}
-        </p>
-        <p>
-          <b>Description: </b> {props.description}
-        </p>
+        <b>Units:</b> {props.credits}
+      </div>
+      <div className="Card-storyContent">
+        <b> Hours: </b> {props.hours}
+      </div>
+      <div className="Card-storyContent">
+        <b>Average Rating: </b> {props.eval}
+      </div>
+      <div className="Card-storyContent">
+        <b>Description: </b> {props.description}
       </div>
     </div>
   );
