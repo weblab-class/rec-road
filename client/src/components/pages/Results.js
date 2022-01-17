@@ -22,16 +22,15 @@ const Results = (props) => {
   return (
     <>
 
-      <MissingPrereq
-        classes={props.prereqs}
+      <ButtonBox
       />
-      <OCWResources
-        classes={props.ocw_links}
+      <ResultClasses
+        
       />
+      <ResultRightColumn/>
 
 
-
-      <p>hi</p>
+      
 
 
 
