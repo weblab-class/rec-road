@@ -47,18 +47,13 @@ const CentralFeed = () => {
   if (hasStories) {
     storiesList = stories.map((storyObj) => (
       <Card
-        key={storyObj.course_id}
-        _id={storyObj.eval}
-        creator_name={storyObj.course_name}
-        content={storyObj.description}
+        course_id={storyObj.course_id}
+        course_name={storyObj.course_name}
+        description={storyObj.description}
+        hours={storyObj.hours}
+        credits={storyObj.credits}
+        eval={storyObj.eval}
       />
-
-      /*course_id: String,
-  course_name: String,
-  description: String,
-  hours: Number,
-  credits: Number,
-  eval: Number*/
     ));
   } else {
     storiesList = <div>{loading && "Loading..."}</div>;
