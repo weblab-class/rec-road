@@ -8,7 +8,7 @@ import Feed from "./pages/Feed.js";
 import Profile from "./pages/Profile.js";
 import Results from "./pages/Results.js";
 import Login from "./pages/Login.js";
-//import add_classes from "./add_classes.js";
+import add_classes from "./add_classes.js";
 //import {addCourse_indexCourse_scoreCourse} from "./db_catchall";
 import "../utilities.css";
 
@@ -29,9 +29,17 @@ const App = () => {
       }
     });
   }, []);
-
+  // // useEffect(() =>{
+    
+  // // post("/api/deletedefaultscores")
+  // // post("/api/deletecourses")
+  // // add_classes()
+  // // //addCourse_indexCourse_scoreCourse()
+  // // }, [])
+  //post("/api/deletecourses")
   //add_classes()
-  //addCourse_indexCourse_scoreCourse()
+
+  
 
   useEffect(() => {
     document.title = "Rec Road";
