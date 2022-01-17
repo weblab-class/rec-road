@@ -44,9 +44,12 @@ const CentralFeed = () => {
     console.log(stories);
   }, [stories]);*/
 
-  const [vote, setVote] = useState("Neutral");
-  const incrementVote = () => {
-    setVote("Dislike");
+  const [vote, setVote] = useState("");
+  const like = () => {
+    setVote("Liked");
+  };
+  const dislike = () => {
+    setVote("Disliked");
   };
 
   let storiesList = null;
@@ -63,12 +66,15 @@ const CentralFeed = () => {
           eval={storyObj.eval}
         />
 
-        <div className="Feed-buttonContainer" onClick={incrementVote}>
-          <div className="Feed-button" />
+        <div className="Feed-buttonContainer" onClick={like}>
+          <div className="Feed-upbutton" />
+        </div>
+
+        <div className="Feed-buttonContainer" onClick={dislike}>
+          <div className="Feed-downbutton" />
         </div>
 
         <div className="Profile-subContainer u-textCenter">
-          <h4 className="Profile-subTitle">Vote</h4>
           <Vote vote={vote} />
         </div>
       </div>

@@ -2,7 +2,16 @@
   padding: 0 48%;
 }
 
-.Feed-button {
+.Feed-upbutton {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  padding-top: 100%;
+  background-size: cover;
+  background-image: url("../../public/upvote.png");
+}
+
+.Feed-downbutton {
   max-width: 100%;
   width: 100%;
   height: auto;

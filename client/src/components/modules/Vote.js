@@ -8,10 +8,8 @@ import React, { Component } from "react";
  */
 const Vote = (props) => {
   return (
-    <div className="Vote-container">
-      <div className="Vote-story">
-        <p className="Vote-storyContent">{props.vote}</p>
-      </div>
+    <div>
+      <p>{props.vote}</p>
     </div>
   );
 };
