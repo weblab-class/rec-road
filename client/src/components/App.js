@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import NavBar from "./modules/NavBar.js";
 import PageNotFound from "./pages/NotFound.js";
 //import Skeleton from "./pages/Skeleton.js";
-import Friends from "./pages/Friends.js"
+import Friends from "./pages/Friends.js";
 import Feed from "./pages/Feed.js";
 import Profile from "./pages/Profile.js";
 import Results from "./pages/Results.js";
@@ -12,18 +12,15 @@ import add_classes from "./add_classes.js";
 //import {addCourse_indexCourse_scoreCourse} from "./db_catchall";
 import "../utilities.css";
 
-
 import { get, post } from "../utilities";
-
 
 /**
  * Define the "App" component
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
-  const [scores, setScores] = useState([])
+  const [scores, setScores] = useState([]);
 
-  
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
@@ -33,7 +30,7 @@ const App = () => {
     });
   }, []);
   // // useEffect(() =>{
-    
+
   // // post("/api/deletedefaultscores")
   // // post("/api/deletecourses")
   // // add_classes()
@@ -42,27 +39,18 @@ const App = () => {
   //post("/api/deletecourses")
   //add_classes()
 
-  
-
-  useEffect(()=>{
-    document.title = "Rec Road"
-  }, [])
-
-  // useEffect(()=>{
-  //   get("/api/stories").then((stories) => {
-  //     console.log(stories)
-  //   })
-  // }, [])
+  useEffect(() => {
+    document.title = "Rec Road";
+  }, []);
 
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
-    console.log(`User token is ${userToken}`)
+    console.log(`User token is ${userToken}`);
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
-      console.log(`User ID is ${user._id}`)
+      console.log(`User ID is ${user._id}`);
     });
-    
   };
 
   const handleLogout = () => {
@@ -72,17 +60,20 @@ const App = () => {
 
   return (
     <>
-      <NavBar handleLogin={handleLogin}
-        handleLogout={handleLogout}
-        userId={userId}
-      />
+      <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+
       <div>
         <Router>
           <Feed path="/" userId={userId} />
-          <Profile path="/profile:userId"/>
-          <Results path="/results/" userId={userId} results={["hi", "hello", "howdy"]}/>
-          <Friends path="/friends/" userIdd={userId}/>
-          <Login path="/login/" userId={userId} handleLogin={handleLogin} handleLogout={handleLogout}/>
+          <Profile path="/profile:userId" />
+          <Results path="/results/" userId={userId} results={["hi", "hello", "howdy"]} />
+          <Friends path="/friends/" userIdd={userId} />
+          <Login
+            path="/login/"
+            userId={userId}
+            handleLogin={handleLogin}
+            handleLogout={handleLogout}
+          />
           <History path="/history/" userId={userId}></History>
           <PageNotFound default />
         </Router>

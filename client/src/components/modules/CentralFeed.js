@@ -3,6 +3,7 @@ import Card from "../modules/Card.js";
 //import { socket } from "../../client-socket.js";
 import { get } from "../../utilities";
 import useCourseSearch from "./useCourseSearch.js";
+import "./CentralFeed.css";
 
 const CentralFeed = () => {
   const [stories, setStories] = useState([]);
@@ -46,32 +47,22 @@ const CentralFeed = () => {
   const hasStories = stories.length !== 0;
   if (hasStories) {
     storiesList = stories.map((storyObj) => (
-      <Card
-        course_id={storyObj.course_id}
-        course_name={storyObj.course_name}
-        description={storyObj.description}
-        hours={storyObj.hours}
-        credits={storyObj.credits}
-        eval={storyObj.eval}
-      />
+      <div>
+        <Card
+          course_id={storyObj.course_id}
+          course_name={storyObj.course_name}
+          description={storyObj.description}
+          hours={storyObj.hours}
+          credits={storyObj.credits}
+          eval={storyObj.eval}
+        />
+      </div>
     ));
   } else {
     storiesList = <div>{loading && "Loading..."}</div>;
   }
 
-  /* TURN THESE INTO CARDS
-        do a for loop and pass each course (story) into its own card
-        and make an html card with that
-        use component header for the title
-        format css for the component header
-        */
-
-  return (
-    <div>
-      {storiesList}
-      {<img src="./downvote.png" />}
-    </div>
-  );
+  return <div>{storiesList}</div>;
 
   /*return (
     <div class="u-textCenter">

@@ -25,7 +25,7 @@ const ResultClasses = (props) => {
             topic_header={"Other Liked Classes"}
             classes={props.other_classes}
         />
-        
+        <p>middle</p>
         
   
       </>

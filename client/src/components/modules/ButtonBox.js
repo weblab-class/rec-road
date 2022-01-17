@@ -13,7 +13,7 @@ const ButtonBox = (props) => {
 
     return (
       <>
-        <p>hi</p>
+        <p>left</p>
   
       </>
     );

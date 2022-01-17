@@ -22,7 +22,7 @@ const OCWResources = (props) => {
         {/* <ComponentHead
           content={"Resources"}
         /> */}
-        {/* {props.classes.map(class => (
+        {/* {props.classes.map((class) => (
           <OCWClass
             course_id={class.prompt}
             course_name={class.value}
