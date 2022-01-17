@@ -140,11 +140,13 @@ router.get("/user", (req, res) => {
 });
 
 router.get("/querycourses", (req, res) => {
+  
   Courses.find({course_id: req.query.course_id}).then((course) => {
     res.send(course)
   })
 
 })
+
 
 
 
@@ -157,7 +159,8 @@ router.get("/stories", (req, res) => {
 
 });
 
-router.get("/topfiveindices", (req, res) => {
+
+router.get("/topfivecourses", (req, res) => {
 
   function add(accumulator, a) {
     return accumulator + a;
@@ -210,19 +213,45 @@ router.get("/topfiveindices", (req, res) => {
     const class_id = indices.map()
   }
 
-  let r1;
+  const all_courses = [];
+ 
   DefaultScores.find({}).then((scores) => {
     //console.log(scores)
     const top_indices = selectTopFiveIndices(scores[0].all_scores)
     //console.log(top_indices)
     //console.log(tyopeof top_indices)
-    r1 = top_indices
     return top_indices
-  }).then((top_indices) => {
-    //console.log('here')
-
-    res.send( top_indices)
+  }).then(top_indices => {
+    CourseIndices.find({}).then((indices) =>{
+      //console.log(indices[0].all_course_id[top_indices[0]])
+      //console.log(typeof top_indices[0])
+      console.log(top_indices.map((a)=>
+        indices[0].all_course_id[a]
+      ))
+      return top_indices.map(a=>indices[0].all_course_id[a])
+    }).then((course_ids) =>{
+        console.log(course_ids)
+        Course.find({course_id:course_ids[0]}).then(course_0 => {
+          all_courses.push(course_0[0])
+          Course.find({course_id:course_ids[1]}).then(course_1 =>{
+            all_courses.push(course_1[0])
+            console.log(all_courses)
+            Course.find({course_id:course_ids[2]}).then(course_2 =>{
+              all_courses.push(course_2[0])
+              Course.find({course_id:course_ids[3]}).then(course_3 =>{
+                all_courses.push(course_3[0])
+                Course.find({course_id:course_ids[4]}).then(course_4=>{
+                  all_courses.push(course_4[0])
+                  res.send(all_courses)
+                })
+              })
+            })
+          })
+        })
   })
+})
+})
+  
   //   return CourseIndices.find({})
   // }).then((input) =>{
   //   return r1.map(a=>{
@@ -257,7 +286,7 @@ router.get("/topfiveindices", (req, res) => {
   //   }
   //   res.send(stories.filter(scoreFilter))
   // })
-})
+
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import { post } from "../utilities";
+import { get, post } from "../utilities";
 //import {classData} from "./full"
 import axios from  'axios'
 
@@ -40,8 +40,17 @@ const add_classes = ()  => {
                 hours: courses.data[i].out_of_class_hours + courses.data[i].in_class_hours,
                 credits: courses.data[i].total_units,
                 eval: courses.data[i].rating}
-
-            post('/api/course', body)//.then((res)=>{
+            get('/api/querycourses', {course_id: courses.data[i].subject_id}).then(course =>{
+                // if (course.length == 0) {
+                //     post('/api/course', body)
+                //     console.log('Course added')
+                // }
+                console.log('Course here')
+            }).catch((err) => {
+                post('/api/course', body)
+            })
+            
+            //post('/api/course', body)//.then((res)=>{
             //    console.log(body.course_id)
             //}
                 
