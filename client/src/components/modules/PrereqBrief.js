@@ -22,11 +22,11 @@ const PrereqBrief = (props) => {
       </div>
 
       <div>
-        {props.prereqs.map((class) => (
+        {/* {props.prereqs.map((class) => (
           <p>
             {class}
           </p>
-        ))}
+        ))} */}
       </div>
     </div>
   );

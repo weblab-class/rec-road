@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ComponentHead from "./ComponentHead.js";
+// import ComponentHead from "./ComponentHead.js";
 import OCWClass from "./OCWClass.js";
 import { get } from "../../utilities";
 import "../../utilities.css";
@@ -19,16 +19,16 @@ const OCWResources = (props) => {
 
     return (
       <>
-        <ComponentHead
+        {/* <ComponentHead
           content={"Resources"}
-        />
-        {props.classes.map((class) => (
+        /> */}
+        {/* {props.classes.map(class => (
           <OCWClass
             course_id={class.prompt}
             course_name={class.value}
             link={class.link}
           />
-        ))}
+        ))} */}
   
       </>
     );

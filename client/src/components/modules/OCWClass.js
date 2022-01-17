@@ -15,7 +15,7 @@ import "./OCWClass.css";
  */
 const OCWClass = (props) => {
   return (
-    <div>
+
       <div>
         <p>
            <a href={props.link}>{props.course_id} {props.course_name} OCW</a>
