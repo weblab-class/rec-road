@@ -18,14 +18,14 @@ const ResultClasses = (props) => {
     return (
       <>
         <ClassRec
-            topic_header={"Spring 2022 Recommended Classes"}
+            content={"Saved Classes"}
             classes={props.rec_classes}
         />
         <ClassRec
-            topic_header={"Other Liked Classes"}
+            content={"Other Liked Classes"}
             classes={props.other_classes}
         />
-        <p>middle</p>
+        
         
   
       </>
