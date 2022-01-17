@@ -16,3 +16,6 @@ const ComponentHead = (props) => {
         </div>
     )
 }
+
+export default OCWResources;
+  
