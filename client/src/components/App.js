@@ -30,7 +30,7 @@ const App = () => {
     });
   }, []);
   // // useEffect(() =>{
-    
+
   // // post("/api/deletedefaultscores")
   // // post("/api/deletecourses")
   // // add_classes()
@@ -39,17 +39,9 @@ const App = () => {
   //post("/api/deletecourses")
   //add_classes()
 
-  
-
   useEffect(() => {
     document.title = "Rec Road";
   }, []);
-
-  // useEffect(()=>{
-  //   get("/api/stories").then((stories) => {
-  //     console.log(stories)
-  //   })
-  // }, [])
 
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
@@ -69,6 +61,7 @@ const App = () => {
   return (
     <>
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+
       <div>
         <Router>
           <Feed path="/" userId={userId} />

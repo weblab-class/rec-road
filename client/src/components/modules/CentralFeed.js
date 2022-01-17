@@ -4,6 +4,7 @@ import Card from "../modules/Card.js";
 import { get } from "../../utilities";
 import useCourseSearch from "./useCourseSearch.js";
 import "./CentralFeed.css";
+import Vote from "./Vote.js";
 
 const CentralFeed = () => {
   const [stories, setStories] = useState([]);
@@ -43,6 +44,11 @@ const CentralFeed = () => {
     console.log(stories);
   }, [stories]);*/
 
+  const [vote, setVote] = useState("Neutral");
+  const incrementVote = () => {
+    setVote("Dislike");
+  };
+
   let storiesList = null;
   const hasStories = stories.length !== 0;
   if (hasStories) {
@@ -56,21 +62,20 @@ const CentralFeed = () => {
           credits={storyObj.credits}
           eval={storyObj.eval}
         />
-        <img src="/Users/helenaliu/weblab/HelenaELiu-klin37-bli46/client/src/components/corgi.jpg"></img>
-        {/*<img src="../../public/downvote.png" />*/}
-        {/*<div className="buttonContainer" />*/}
+
+        <div className="Feed-buttonContainer" onClick={incrementVote}>
+          <div className="Feed-button" />
+        </div>
+
+        <div className="Profile-subContainer u-textCenter">
+          <h4 className="Profile-subTitle">Vote</h4>
+          <Vote vote={vote} />
+        </div>
       </div>
     ));
   } else {
     storiesList = <div>{loading && "Loading..."}</div>;
   }
-
-  /* TURN THESE INTO CARDS
-        do a for loop and pass each course (story) into its own card
-        and make an html card with that
-        use component header for the title
-        format css for the component header
-        */
 
   return <div>{storiesList}</div>;
 
