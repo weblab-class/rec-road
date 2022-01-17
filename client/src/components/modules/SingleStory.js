@@ -15,14 +15,24 @@ import { Link } from "@reach/router";
 const SingleStory = (props) => {
   return (
     <div>
-      <Link to={`/profile/${props.course_name}`} className="u-link u-bold Card-storyTitle">
-        {props.course_name} ({props.course_id})
-      </Link>
+      <div className="Card-storyTitle">
+        <p>
+          {props.course_name} ({props.course_id})
+        </p>
+      </div>
       <div className="Card-storyContent">
-        <p> Units: {props.credits}</p>
-        <p> Hours: {props.hours}</p>
-        <p> Average Rating: {props.eval}</p>
-        <p> Description: {props.description}</p>
+        <p>
+          <b>Units:</b> {props.credits}
+        </p>
+        <p>
+          <b> Hours: </b> {props.hours}
+        </p>
+        <p>
+          <b>Average Rating: </b> {props.eval}
+        </p>
+        <p>
+          <b>Description: </b> {props.description}
+        </p>
       </div>
     </div>
   );

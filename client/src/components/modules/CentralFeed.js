@@ -33,7 +33,7 @@ const CentralFeed = () => {
   };
 
   useEffect(() => {
-    get("/api/stories").then((storyObjs) => {
+    get("/api/courses").then((storyObjs) => {
       setStories(storyObjs);
     });
   }, []);
@@ -66,7 +66,12 @@ const CentralFeed = () => {
         format css for the component header
         */
 
-  return <div>{storiesList}</div>;
+  return (
+    <div>
+      {storiesList}
+      {<img src="./downvote.png" />}
+    </div>
+  );
 
   /*return (
     <div class="u-textCenter">

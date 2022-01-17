@@ -1,32 +1,37 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import ComponentHead from "./ComponentHead.js";
 import PrereqBrief from "./PrereqBrief.js";
 import { get } from "../../utilities";
-
+import "../../utilities.css";
 import "./MissingPrereq.css";
 
-import "../../utilities.css";
-
+/**
+ * MissingPrereq is a box in the right sidebar that lists the missing prereqs
+ *
+ * Proptypes
+ * @param {list} classes list of dictionaries, should contain a list of classes (the scheduled classes, not prereqs),
+ *                            each dictionary should have keys class.prompt and class.prereqs (lists the prereqs)
+ *                       
+ */
 
 const MissingPrereq = (props) => {
 
-  return (
-    // <div className="Card-container">
-    // {props.results.map(result => (<div>{result}</div>))}
-    // <ComponentHead>
-    //   <SingleStory
-    //     _id={props._id}
-    //     creator_name={props.creator_name}
-    //     creator_id={props.creator_id}
-    //     content={props.content}
-    //   />
 
-    // </div>
-
-    hi
-  );
-};
-
-export default Results;
-
-
-
+    return (
+      <>
+        <ComponentHead
+          content={"Missing Prerequisites"}
+        />
+        {props.classes.map((class) => (
+          <PrereqBrief
+            prompt={class.prompt}
+            prereqs={class.prereqs}
+          />
+        ))}
+  
+      </>
+    );
+  };
+  
+  export default MissingPrereq;
+  
