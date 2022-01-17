@@ -66,15 +66,16 @@ const CentralFeed = () => {
           eval={storyObj.eval}
         />
 
-        <div className="Feed-buttonContainer" onClick={like}>
-          <div className="Feed-upbutton" />
-        </div>
+        <div class="row">
+          <div className="Feed-buttonContainer column" onClick={like}>
+            <div className="Feed-upbutton" />
+          </div>
 
-        <div className="Feed-buttonContainer" onClick={dislike}>
-          <div className="Feed-downbutton" />
+          <div className="Feed-buttonContainer column" onClick={dislike}>
+            <div className="Feed-downbutton" />
+          </div>
         </div>
-
-        <div className="Profile-subContainer u-textCenter">
+        <div>
           <Vote vote={vote} />
         </div>
       </div>

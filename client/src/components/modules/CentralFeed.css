@@ -1,5 +1,5 @@
 .Feed-buttonContainer {
-  padding: 0 48%;
+  padding: 0 45%;
 }
 
 .Feed-upbutton {
@@ -18,4 +18,13 @@
   padding-top: 100%;
   background-size: cover;
   background-image: url("../../public/downvote.png");
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  padding: 2px;
+  flex-basis: 30px;
 }
