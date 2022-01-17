@@ -96,3 +96,25 @@ form {
 .u-link:hover {
   color: var(--primary--dim);
 }
+
+.u-row-made-by-containers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.u-center-container {
+  flex-basis: 40%
+}
+
+.u-side-containers {
+  flex-basis: 30%
+}
+
+/* .u-making-column-inside-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+} */

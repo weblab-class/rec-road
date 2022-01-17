@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-//import ComponentHead from "./ComponentHead.js";
+import ComponentHead from "./ComponentHead.js";
 import ClassBrief from "./ClassBrief.js";
 import { get } from "../../utilities";
 import "../../utilities.css";
@@ -20,7 +20,7 @@ const ClassRec = (props) => {
     return (
       <>
         <ComponentHead
-          topic_header={props.content}
+          content={props.content}
         />
         {/* {props.classes.map((class) => (
           <ClassBrief

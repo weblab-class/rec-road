@@ -21,7 +21,7 @@ const Results = (props) => {
 
   return (
     <>
-
+      <div className="u-row-made-by-containers">
       <ButtonBox
       />
       <ResultClasses
@@ -30,7 +30,7 @@ const Results = (props) => {
       <ResultRightColumn/>
 
 
-      
+      </div>
 
 
 

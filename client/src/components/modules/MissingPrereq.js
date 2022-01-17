@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import ComponentHead from "./ComponentHead.js";
+import ComponentHead from "./ComponentHead.js";
 import PrereqBrief from "./PrereqBrief.js";
 import { get } from "../../utilities";
 import "../../utilities.css";
@@ -27,7 +27,7 @@ const MissingPrereq = (props) => {
             prompt={class.prompt}
             prereqs={class.prereqs}
           /> */}
-})}
+
   
       </>
     );
