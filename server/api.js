@@ -10,8 +10,13 @@
 const express = require("express");
 
 // import models so we can interact with the database
+
+
 const Story = require("./models/story");
 const User = require("./models/user");
+const Course = require("./models/course");
+const CourseIndices = require("./models/courseIndices");
+const DefaultScores = require("./models/defaultScores");
 
 // import authentication library
 const auth = require("./auth");
@@ -27,9 +32,51 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
+router.post("/defaultscores", (req, res) => {
+  const newScore = new DefaultScores({
+    all_scores: req.body.all_scores
+  })
+  newScore.save().then((score) => res.send(score));
+
+})
+router.post("/courseindices", (req, res) => {
+  const newIndex = new CourseIndices({
+    all_course_id: req.body.all_course_id
+  })
+  newIndex.save().then((course) => res.send(course));
+})
+
+router.post("/course", (req, res) => {
+  const newCourse = new Course({
+    course_id: req.body.course_id,
+    course_name: req.body.course_name,
+    description: req.body.description,
+    hours: req.body.hours,
+    credits: req.body.credits,
+    eval: req.body.eval
+  });
+
+  newCourse.save().then((course) => res.send(course));
+});
+router.get("/courses", (req, res) => {
+  // empty selector means get all documents
+  Course.find({}).then((courses) => res.send(courses));
+
+});
 router.get("/stories", (req, res) => {
   // empty selector means get all documents
   Story.find({}).then((stories) => res.send(stories));
+
+});
+
+router.get("/courseindices", (req, res) => {
+  // empty selector means get all documents
+  CourseIndices.find({}).then((index) => res.send(index));
+
+});
+router.get("/defaultscores", (req, res) => {
+  // empty selector means get all documents
+  DefaultScores.find({}).then((score) => res.send(score));
 
 });
 
