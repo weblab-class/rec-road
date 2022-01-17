@@ -38,7 +38,7 @@ const Card = (props) => {
         eval={props.eval}
       />
 
-      <div class="row">
+      <div className="row">
         <div className="Card-buttonContainer column" onClick={like}>
           <div className="Card-upbutton" />
         </div>
