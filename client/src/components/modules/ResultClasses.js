@@ -26,7 +26,7 @@ const ResultClasses = (props) => {
             classes={props.other_classes}
         />
         
-        )}
+        
   
       </>
     );
