@@ -15,7 +15,9 @@
 14. Login with Touchstone/Integration with Canvas (not sure if these will be the same system/can students login to our website without connecting to Canvas?)
 15. Export to FireRoad
 16. Friend page/system
-17. A few more stylistic choices
+17. Implement prereq box/algorithm in results
+18. Implement OCW links/box in results
+19. A few more stylistic choices
 
 # How to code a webapp with this skeleton
 
