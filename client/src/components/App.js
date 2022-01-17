@@ -14,6 +14,7 @@ import "../utilities.css";
 
 import { get, post } from "../utilities";
 
+
 /**
  * Define the "App" component
  */
@@ -31,12 +32,6 @@ const App = () => {
     });
   }, []);
 
-  useEffect(() =>{
-    get("/api/whoami").then((user) => {
-      if (user._id) {
-
-      }
-  }, [userId])
   //add_classes()
 
   useEffect(()=>{
