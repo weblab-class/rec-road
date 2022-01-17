@@ -61,7 +61,7 @@
 }
 
 .Card-savebutton {
-  background-color: #ffcd1d;
+  background-color: var(--checkbox);
 }
 
 .row {
