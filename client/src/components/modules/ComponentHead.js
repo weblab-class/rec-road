@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./ComponentHead.css"
-import "../../utilities.css"
+import "./ComponentHead.css";
+import "../../utilities.css";
 
 /**
  * ComponentHead is a component that serves as a header for other components.
@@ -10,12 +10,7 @@ import "../../utilities.css"
  */
 
 const ComponentHead = (props) => {
-    return (
-        <div className="ComponentHead-container u-bold">
-            {props.content}
-        </div>
-    )
-}
+  return <div className="ComponentHead-container u-bold">{props.content}</div>;
+};
 
-export default OCWResources;
-  
+export default ComponentHead;

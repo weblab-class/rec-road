@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import ComponentHead from "./ComponentHead.js";
 
 /**
  * Story is a component that renders creator and content of a story
@@ -17,7 +18,7 @@ const SingleStory = (props) => {
     <div>
       <div className="Card-storyTitle">
         <p>
-          {props.course_name} ({props.course_id})
+          <ComponentHead>content = {props.course_name}</ComponentHead>
         </p>
       </div>
       <div className="Card-storyContent">
