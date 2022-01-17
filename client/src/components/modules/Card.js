@@ -23,6 +23,9 @@ const Card = (props) => {
   const dislike = () => {
     setVote("Disliked");
   };
+  const save = () => {
+    setVote("Saved!");
+  };
 
   return (
     <div>
@@ -42,6 +45,10 @@ const Card = (props) => {
 
         <div className="Card-buttonContainer column" onClick={dislike}>
           <div className="Card-downbutton" />
+        </div>
+
+        <div className="Card-buttonContainer column" onClick={save}>
+          <div className="Card-savebutton"> Save </div>
         </div>
       </div>
       <div>

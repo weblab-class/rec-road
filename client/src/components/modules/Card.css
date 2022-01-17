@@ -1,3 +1,5 @@
+@import "../../utilities.css";
+
 .Card-container {
   border: var(--darkgrey) 1px solid;
   border-radius: var(--xs);
@@ -56,6 +58,10 @@
   padding-top: 100%;
   background-size: cover;
   background-image: url("../../public/downvote.png");
+}
+
+.Card-savebutton {
+  background-color: #ffcd1d;
 }
 
 .row {
