@@ -35,3 +35,34 @@
 .Card-commentBody {
   margin: 0 0 var(--s);
 }
+
+.Card-buttonContainer {
+  padding: 0 45%;
+}
+
+.Card-upbutton {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  padding-top: 100%;
+  background-size: cover;
+  background-image: url("../../public/upvote.png");
+}
+
+.Card-downbutton {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  padding-top: 100%;
+  background-size: cover;
+  background-image: url("../../public/downvote.png");
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  padding: 2px;
+  flex-basis: 30px;
+}
