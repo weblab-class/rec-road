@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const UserScoreSchema = new mongoose.Schema({
-  name: String,
-  googleid: String,
+  userName: String,
+  allScores: [Number]
 });
 
 // compile model from schema
