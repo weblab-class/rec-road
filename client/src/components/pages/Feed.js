@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "../modules/Card.js";
-import FeedSideBar from "../modules/FeedSideBar"
-import CentralFeed from "../modules/CentralFeed"
+import FeedSideBar from "../modules/FeedSideBar";
+import CentralFeed from "../modules/CentralFeed";
 
 import { get } from "../../utilities";
 
@@ -13,11 +13,11 @@ const Feed = (props) => {
   useEffect(() => {
     document.title = "Course Feed";
   }, []);
-  
+
   return (
     <>
-     <FeedSideBar/>
-    <CentralFeed/>
+      <FeedSideBar />
+      <CentralFeed />
     </>
   );
 };
