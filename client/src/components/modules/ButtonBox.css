@@ -1,14 +1,26 @@
 .ButtonBox-container {
-    
-  }
+  background-color: var(--primary);
+  padding: 30px 40px 30px 40px;
+}
 
 .fireroad-button-container {
-
-
-
+  background-color: var(--button-grapefruit);
+  padding: 5px 5px 5px 5px;
 }
 
 .fireroad-button-text {
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+}
 
-    
+.return-feed-button-container {
+    background-color: var(--button-orange);
+    padding: 5px 5px 5px 5px;
+}
+  
+.return-feed-button-text {
+    font-size: 24px;
+    font-weight: 900;
+    text-align: center;
 }

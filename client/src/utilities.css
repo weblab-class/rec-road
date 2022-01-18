@@ -42,7 +42,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Cairo", sans-serif;
-  font-weight: 300;
+  font-weight: 100;
+  font-size: 20px;
   background-color: var(--background);
 }
 
@@ -72,7 +73,7 @@ form {
 }
 
 .u-bold {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .u-textCenter {
@@ -105,11 +106,16 @@ form {
 }
 
 .u-center-container {
-  flex-basis: 40%
+  flex-basis: 60%;
 }
 
-.u-side-container {
-  flex-basis: 30%
+.u-result-rightbar {
+  flex-basis: 20%;
+}
+
+.u-buttonbox {
+  flex-basis: 20%;
+  padding: 150px 50px 150px 50px;
 }
 
 .u-making-column-inside-container {
@@ -119,4 +125,15 @@ form {
 
 .u-component-body {
   background-color: var(--primary);
+}
+
+.u-line-of-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.u-item-in-a-line {
+  align-items: left;
 }

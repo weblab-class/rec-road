@@ -22,14 +22,18 @@ const ClassBrief = (props) => {
           <b>{props.course_id} {props.course_name}</b>
         </p>
       </div>
-
-      <div>
-        <div>
-            {props.credits} units
-        </div>
-        <div>
-            {props.hours} hours
-        </div>
+      <div className="u-line-of-items">
+        <span className="u-line-of-items u-item-in-a-line">
+          <span className="u-item-in-a-line">
+              {props.credits} units
+          </span>
+          <span className="u-item-in-a-line">
+              {props.hours} hours
+          </span>
+        </span>
+        <span className="u-item-in-a-line">
+          blah
+        </span>
       </div>
     </div>
   );

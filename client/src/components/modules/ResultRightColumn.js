@@ -27,7 +27,7 @@ const ResultRightColumn = (props) => {
           />
         
         </div> */}
-        <div>hi</div>
+        <div className = "u-result-rightbar u-making-column-inside-container">hi</div>
       </>
     );
   };
