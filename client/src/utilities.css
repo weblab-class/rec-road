@@ -51,6 +51,10 @@ form {
   flex-grow: 1;
 }
 
+.u-small-font {
+  font-size: 12px;
+}
+
 .u-flex {
   display: flex;
 }

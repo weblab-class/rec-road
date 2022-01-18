@@ -25,7 +25,7 @@ const ButtonBox = (props) => {
               Export to FireRoad
             </div>
           </div>
-          <div>
+          <div className="u-small-font">
             <p>{exported}</p>
           </div>
 
