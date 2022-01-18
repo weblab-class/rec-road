@@ -44,7 +44,7 @@ router.get('/allsavedcourses', (req, res)=>{
 })
 
 router.get('/savedcourses', auth.ensureLoggedIn, (req, res)=>{
-  SavedCourse.find({course_id:req.query.course_id, user_id:req.user._id}).then(course=>{
+  SavedCourse.find({user_id:req.user._id}).then(course=>{
     res.send(course)
   })
 })
