@@ -21,16 +21,9 @@ const add_classes = ()  => {
         return total_sum / present_length
     }
 
-    useEffect(() =>{
+    const iterateOverClasses = async () => {
         let index_arr = []
         let score_arr = []
-        setCount(count+1)
-        //console.log(courses.data[0])
-        //console.log(count)
-        
-
-        if (count === 1) {
-            console.log(courses.data.length)
         for (let i = 0; i < courses.data.length; i++) {
             index_arr.push(courses.data[i].subject_id)
             score_arr.push(courses.data[i].rating/7.0)
@@ -40,15 +33,19 @@ const add_classes = ()  => {
                 hours: courses.data[i].out_of_class_hours + courses.data[i].in_class_hours,
                 credits: courses.data[i].total_units,
                 eval: courses.data[i].rating}
-            get('/api/querycourses', {course_id: courses.data[i].subject_id}).then(course =>{
-                // if (course.length == 0) {
-                //     post('/api/course', body)
-                //     console.log('Course added')
-                // }
-                console.log('Course here')
-            }).catch((err) => {
-                post('/api/course', body)
-            })
+            // await post('/api/adjacencylists', {course_id: courses.data[i].subject_id,
+            //     course_adjacencies: courses.data[i].related_subjects}) 
+            console.log(i);
+            //courses.data[i].related_courses
+            // get('/api/querycourses', {course_id: courses.data[i].subject_id}).then(course =>{
+            //     // if (course.length == 0) {
+            //await post('/api/course', body)
+            //     //     console.log('Course added')
+            //     // }
+            //     console.log('Course here')
+            // }).catch((err) => {
+            //     post('/api/course', body)
+            // })
             
             //post('/api/course', body)//.then((res)=>{
             //    console.log(body.course_id)
@@ -62,12 +59,27 @@ const add_classes = ()  => {
         //     if (!score_arr[i]){
         //         score_arr[i] = average
         //     }
-        //     console.log(score_arr[i])
+        //     console.log(i)
         // }
+        const body2 = {all_scores: score_arr}
+        //const body2 = {all_scores: score_arr.slice(0, Math.floor(score_arr.length/2))}
+        //await post('/api/defaultscores', body2)
+    }
+    useEffect(() =>{
+        
+        setCount(count+1)
+        //console.log(courses.data[0])
+        //console.log(count)
+        
+        const adjacencies = {}
+        if (count === 1) {
+            console.log(courses.data.length)
+            iterateOverClasses();
+        
           //const body = {all_course_id: index_arr}
           //post('/api/courseindices', body)
         //console.log(score_arr)
-        const body2 = {all_scores: score_arr}
+        //const body2 = {all_scores: score_arr}
         //post('/api/defaultscores', body2)
         }
     }, [courses])

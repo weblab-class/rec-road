@@ -18,6 +18,7 @@ const Course = require("./models/course");
 const CourseIndices = require("./models/courseIndices");
 const DefaultScores = require("./models/defaultScores");
 const UserScores = require("./models/userScores");
+const Adjacencies = require("./models/adjacencies")
 
 // import authentication library
 const auth = require("./auth");
@@ -33,22 +34,91 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
+router.post("/postdefaultscores", (req, res) =>{
+    const userscores = new UserScores({
+      user_id: req.user._id,
+      allScores: []
+    })
+    DefaultScores.find({}).then((defaultscores) =>{
+      userscores.allScores = defaultscores[0].all_scores.map(a=>{
+        let x = a
+        if (!a){
+          x = 0.5
+        }
+        return x
+      })
+      userscores.save().then((scores) => res.send(scores))
+    })
+})
+router.get("/userscores", auth.ensureLoggedIn, (req, res) => {
+  UserScores.find({user_id:req.user._id}).then(scores => {
+    res.send(scores)
+  })
+})
+
+router.post("/deletealladjacencies", (req, res) =>{
+  Adjacencies.deleteMany({}).then((status) => res.send(status))
+})
+
+router.get("/alladjlists", (req, res) =>{
+  Adjacencies.find({}).then(output=>{
+    res.send(output)
+  })
+})
+router.get("/alluserscores", (req,res)=>{
+  UserScores.find({}).then(output=>{
+    res.send(output)
+  })
+})
+router.post("/deletealluserscores", (req, res)=>{
+  UserScores.deleteMany({}).then((status)=>res.send(status))
+})
+
+router.post("/adjacencylists", (req, res) => {
+    
+    const newList = new Adjacencies({
+      course_id: req.body.course_id,
+      course_adjacencies: req.body.course_adjacencies
+    })
+    newList.save().then(output=>{
+      res.send(output)
+    })
+  
+})
+
+//router.post()
+
+router.get("/existsuserscores", auth.ensureLoggedIn, (req, res) => {
+  UserScores.countDocuments({user_id:req.user._id}).then((count) =>{
+    //console.log(count)
+    res.send({existence:count})
+  })
+})
+
 router.post("/updateuserscores", auth.ensureLoggedIn, (req, res) => {
+  // req.body.vote should consist of a number, either 0 or 1. 
+  // 0 being downvote, 1 being upvote
+  // req.body.class_id should be the course id
   const filter = {user_id:req.user._id}
   const options = { upsert: true };
-  const updateDoc = {
-    user_id: req.user._id,
-    allScores: req.body.content
-  }
+  // const updateDoc = {
+  //   user_id: req.user._id,
+  //   allScores: ''
+  // }
+  UserScores.find({user_id:req.user._id}).then((existing_doc)=>{
+    const new_doc = existing_doc.assign({}, existing_doc)
+
+  }).then((updateDoc)=>{
   UserScores.updateOne(filter, updateDoc, options).then((course) => res.send(course))
+  })
 })
 
 router.post("/deletedefaultscores", (req, res) => {
-  DefaultScores.deleteMany({}).then((status) => console.log(status))
+  DefaultScores.deleteMany({}).then((status) => res.send(status))
 })
 
 router.post("/deletecourses", (req, res) => {
-  Course.deleteMany({}).then((status) => console.log(status))
+  Course.deleteMany({}).then((status) => res.send(status))
 })
 
 router.post("/defaultscores", (req, res) => {
@@ -97,7 +167,7 @@ router.get("/courseindices", (req, res) => {
 router.get("/defaultscores", (req, res) => {
   // empty selector means get all documents
   DefaultScores.find({}).then((score) => {
-    console.log(score[0].all_scores.length)
+    //console.log(score[0].all_scores.length)
     res.send(score)});
 });
 
