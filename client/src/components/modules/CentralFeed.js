@@ -5,7 +5,14 @@ import { get } from "../../utilities";
 import useCourseSearch from "./useCourseSearch.js";
 import "./CentralFeed.css";
 
-const CentralFeed = () => {
+/**
+ * CentralFeed is a component for displaying the center part of the feed
+ *
+ * Proptypes
+ * @param {string} userId of the user
+ */
+
+const CentralFeed = (props) => {
   const [stories, setStories] = useState([]);
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
@@ -55,6 +62,7 @@ const CentralFeed = () => {
           hours={storyObj.hours}
           credits={storyObj.credits}
           eval={storyObj.eval}
+          userId={props.userId}
         />
       </div>
     ));

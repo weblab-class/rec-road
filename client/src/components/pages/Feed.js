@@ -5,6 +5,13 @@ import CentralFeed from "../modules/CentralFeed";
 
 import { get } from "../../utilities";
 
+/**
+ * Feed is a component for displaying the feed
+ *
+ * Proptypes
+ * @param {string} userId of the user
+ */
+
 const Feed = (props) => {
   const [stories, setStories] = useState([]);
 
@@ -17,7 +24,7 @@ const Feed = (props) => {
   return (
     <>
       <FeedSideBar />
-      <CentralFeed />
+      <CentralFeed userId={props.userId} />
     </>
   );
 };

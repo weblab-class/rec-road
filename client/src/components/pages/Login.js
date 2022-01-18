@@ -11,26 +11,23 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   return (
     <>
       <div className="u-textCenter">
-      <h2>
-        Please login first: 
-      </h2>
-      
-      {userId ? (
-        <GoogleLogout
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Logout"
-          onLogoutSuccess={handleLogout}
-          onFailure={(err) => console.log(err)}
-        />
-      ) : (
-        <GoogleLogin
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Login"
-          onSuccess={handleLogin}
-          onFailure={(err) => console.log(err)}
-        />
-      )}
+        <h2>Please login first:</h2>
 
+        {userId ? (
+          <GoogleLogout
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Logout"
+            onLogoutSuccess={handleLogout}
+            onFailure={(err) => console.log(err)}
+          />
+        ) : (
+          <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={handleLogin}
+            onFailure={(err) => console.log(err)}
+          />
+        )}
       </div>
     </>
   );
