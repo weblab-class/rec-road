@@ -66,9 +66,46 @@ router.post('/savecourse', auth.ensureLoggedIn, (req, res)=>{
   
 })
 
-// router.get("/topscoreclasses", auth.ensureLoggedIn, (req, res)=>{
-//   res.send(heyo)
-// })
+router.get("/topscoreclasses", auth.ensureLoggedIn, (req, res)=>{
+  function top10(arr) {
+    var results = [[0,Number.MAX_VALUE],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+  
+    for (var i=0; i<arr.length; i++) {
+      // search from back to front
+      for (var j=9; j>=0; j--) {
+         if (arr[i] <= results[j][1]) {
+           if (j==9)
+             break;
+           results.splice(j+1, 0, [i, arr[i]]);
+           results.pop();
+           break;
+        }
+      }
+    }
+    return results.slice(1);
+  }
+
+  const search10course = async (coursekeys) => {
+    const course_list = [];
+    for (let i=0; i < 10; i++){
+      console.log(coursekeys[i])
+      const list_item = await Course.findOne({course_id:coursekeys[i]});
+      course_list.push(list_item);
+    };
+    return course_list
+  };
+  UserScores.findOne({user_id:req.user._id}).then((user_scores)=>{
+    const top10scores = top10(user_scores.all_scores);
+    const returntop10 = top10scores.map(a=>a[0]);
+    CourseIndices.findOne({}).then((all_indices)=>{
+      const actual_top_10 = returntop10.map(a=>all_indices.all_course_id[a]);
+      return search10course(actual_top_10);
+    }).then(bestcourses=>{
+      res.send(bestcourses)
+    
+  })
+  })
+})
 
 router.get("/getalllikedislike", (req, res)=>{
   LikesDislikes.find({})
@@ -104,7 +141,7 @@ router.post("/postdefaultscores", (req, res) =>{
         if (!a){
           x = 0.5
         }
-        return x/100000.
+        return x/300.
       })
       userscores.save().then((scores) => res.send(scores))
     })
