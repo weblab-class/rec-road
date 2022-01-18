@@ -13,11 +13,9 @@ import "./CentralFeed.css";
  */
 
 const CentralFeed = (props) => {
-  const [stories, setStories] = useState([]);
-  const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
 
-  const { courses, hasMore, loading, error } = useCourseSearch(query, pageNumber);
+  const { courses, hasMore, loading, error } = useCourseSearch(pageNumber);
 
   const observer = useRef();
 
@@ -35,64 +33,43 @@ const CentralFeed = (props) => {
     [loading, hasMore]
   );
 
-  const handleSearch = (e) => {
-    setQuery(e.target.value);
-    setPageNumber(1);
-  };
-
-  useEffect(() => {
-    get("/api/topfivecourses").then((storyObjs) => {
-      setStories(storyObjs);
-    });
-  }, []);
-
-  /*useEffect(() => {
-    console.log(stories);
-  }, [stories]);*/
-
-  let storiesList = null;
-  const hasStories = stories.length !== 0;
-  if (hasStories) {
-    storiesList = stories.map((storyObj) => (
-      <div>
-        <Card
-          course_id={storyObj.course_id}
-          course_name={storyObj.course_name}
-          description={storyObj.description}
-          hours={storyObj.hours}
-          credits={storyObj.credits}
-          eval={storyObj.eval}
-          userId={props.userId}
-        />
-      </div>
-    ));
-  } else {
-    storiesList = <div>{loading && "Loading..."}</div>;
-  }
-
-  return <div className="u-center-container">{storiesList}</div>;
-
-  /*return (
-    <div class="u-textCenter">
-      <input type="text" value={query} onChange={handleSearch}></input>
-      <link rel="stylesheet" href="../../utilities.css" />
-      <div>
-        {courses.map((course, index) => {
-          if (course.length === index + 1) {
-            return (
-              <div ref={lastCourseElementRef} key={course}>
-                {course}
-              </div>
-            );
-          } else {
-            return <div key={course}>{course}</div>;
-          }
-        })}
-      </div>
+  return (
+    <div className="u-center-container">
+      {courses.map((courseObj, index) => {
+        if (courses.length === index + 1) {
+          return (
+            <div ref={lastCourseElementRef} key={courseObj}>
+              <Card
+                course_id={courseObj.course_id}
+                course_name={courseObj.course_name}
+                description={courseObj.description}
+                hours={courseObj.hours}
+                credits={courseObj.credits}
+                eval={courseObj.eval}
+                userId={props.userId}
+              />
+            </div>
+          );
+        } else {
+          return (
+            <div key={courseObj}>
+              <Card
+                course_id={courseObj.course_id}
+                course_name={courseObj.course_name}
+                description={courseObj.description}
+                hours={courseObj.hours}
+                credits={courseObj.credits}
+                eval={courseObj.eval}
+                userId={props.userId}
+              />
+            </div>
+          );
+        }
+      })}
       <div>{loading && "Loading..."}</div>
       <div>{error && "Error..."}</div>
     </div>
-  );*/
+  );
 };
 
 export default CentralFeed;
