@@ -44,7 +44,7 @@ const Card = (props) => {
   };
 
   return (
-    <div>
+    <div className="u-component-body">
       <SingleStory
         course_id={props.course_id}
         course_name={props.course_name}
