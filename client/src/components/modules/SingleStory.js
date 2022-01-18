@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import ComponentHead from "./ComponentHead.js";
+import "../../utilities.css";
 
 /**
  * Story is a component that renders creator and content of a story
@@ -17,23 +18,24 @@ const SingleStory = (props) => {
   const temp = props.course_name + " (" + props.course_id + ")";
   return (
     <div>
-      <div className="Card-storyTitle">
-        <div>
-          <ComponentHead content={temp} />
+        <div className="Card-storyTitle">
+          <div>
+            <ComponentHead content={temp} />
+          </div>
         </div>
-      </div>
-      <div className="Card-storyContent">
-        <b>Units:</b> {props.credits}
-      </div>
-      <div className="Card-storyContent">
-        <b> Hours: </b> {props.hours}
-      </div>
-      <div className="Card-storyContent">
-        <b>Average Rating: </b> {props.eval}
-      </div>
-      <div className="Card-storyContent">
-        <b>Description: </b> {props.description}
-      </div>
+      
+        <div className="Card-storyContent">
+          <b>Units:</b> {props.credits}
+        </div>
+        <div className="Card-storyContent">
+          <b> Hours: </b> {props.hours}
+        </div>
+        <div className="Card-storyContent">
+          <b>Average Rating: </b> {props.eval}
+        </div>
+        <div className="Card-storyContent">
+          <b>Description: </b> {props.description}
+        </div>
     </div>
   );
 };

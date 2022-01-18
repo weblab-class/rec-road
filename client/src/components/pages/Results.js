@@ -20,24 +20,32 @@ import "./Results.css";
 const Results = (props) => {
 
   const [stories, setStories] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    get("/api/courses").then((storyObjs) => {
+    get("/api/topfivecourses").then((storyObjs) => {
+      //console.log(storyObjs[0])
       setStories(storyObjs);
+      setLoading(false);
     });
   }, []);
+  useEffect(()=>{
+    console.log(stories[0])
+  }, [stories])
 
+  if (isLoading) {
+            return <div className="App">Loading...</div>;
+          }
+  else{
   return (
     <>
       <div className="u-row-made-by-containers">
         <ButtonBox/>
-        <div>
-        {storyObjs}
-        </div>
-        {/* <ResultClasses
-          rec_classes={storyObjs}
-          other_classes={storyObjs}
-        /> */}
+        
+        <ResultClasses
+          rec_classes={stories}
+          other_classes={stories}
+        />
 
         <ResultRightColumn
           // prereqs=
@@ -50,7 +58,7 @@ const Results = (props) => {
 
 
     </>
-  );
+  );}
 };
 
 export default Results;

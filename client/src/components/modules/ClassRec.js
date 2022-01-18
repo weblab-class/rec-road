@@ -19,18 +19,19 @@ const ClassRec = (props) => {
 
     return (
       <>
-        <ComponentHead
-          content={props.content}
-        />
-        {props.classes.map((class_dict) => (
-          <ClassBrief
-            course_id={class_dict.course_id}
-            course_name={class_dict.course_name}
-            hours={class_dict.hours}
-            credits={class_dict.credits}
+        <div className="u-component-body">
+          <ComponentHead
+            content={props.content}
           />
-        ))} 
-  
+          {props.classes.map((class_dict) => (
+            <ClassBrief
+              course_id={class_dict.course_id}
+              course_name={class_dict.course_name}
+              hours={class_dict.hours}
+              credits={class_dict.credits}
+            />
+          ))} 
+        </div>
       </>
     );
   };
