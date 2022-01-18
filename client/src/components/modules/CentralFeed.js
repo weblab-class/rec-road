@@ -38,7 +38,7 @@ const CentralFeed = (props) => {
       {courses.map((courseObj, index) => {
         if (courses.length === index + 1) {
           return (
-            <div ref={lastCourseElementRef} key={courseObj}>
+            <div ref={lastCourseElementRef} key={courseObj.course_id}>
               <Card
                 course_id={courseObj.course_id}
                 course_name={courseObj.course_name}
@@ -52,7 +52,7 @@ const CentralFeed = (props) => {
           );
         } else {
           return (
-            <div key={courseObj}>
+            <div key={courseObj.course_id}>
               <Card
                 course_id={courseObj.course_id}
                 course_name={courseObj.course_name}

@@ -141,7 +141,7 @@ router.post("/postdefaultscores", (req, res) =>{
         if (!a){
           x = 0.5
         }
-        return x/300.
+        return x/10.
       })
       userscores.save().then((scores) => res.send(scores))
     })
