@@ -91,7 +91,7 @@ const App = () => {
           <Feed path="/" userId={userId} />
           <Profile path="/profile:userId" />
           <Results path="/results/" userId={userId} results={["hi", "hello", "howdy"]} />
-          <Friends path="/friends/" userIdd={userId} />
+          <Friends path="/friends/" userId={userId} />
           <Login
             path="/login/"
             userId={userId}

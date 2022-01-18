@@ -11,20 +11,36 @@ import "./Card.css";
  * @param {string} course_id of the story
  * @param {string} course_name
  * @param {string} description
- * @param {string} hours of the story
- * @param {string} credits of the story
- * @param {string} eval of the story
+ * @param {string} hours
+ * @param {string} credits
+ * @param {string} eval
+ * @param {string} userId of the user
  */
 const Card = (props) => {
   const [vote, setVote] = useState("");
+  const [user, setUser] = useState();
+
   const like = () => {
-    setVote("Liked");
+    if (props.userId) {
+      setVote("Liked");
+    } else {
+      setVote("Please Login to Vote");
+    }
   };
+
   const dislike = () => {
-    setVote("Disliked");
+    if (props.userId) {
+      setVote("Disliked");
+    } else {
+      setVote("Please Login to Vote");
+    }
   };
   const save = () => {
-    setVote("Saved!");
+    if (props.userId) {
+      setVote("Saved!");
+    } else {
+      setVote("Please Login to Vote");
+    }
   };
 
   return (
