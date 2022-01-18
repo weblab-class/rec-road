@@ -3,15 +3,15 @@ import { get } from "../../utilities";
 import ProfileItem from "./ProfileItem"
 
 const ProfileBox = () => {
-    const [userParams, setUserParams] = useState()
-    useEffect(()=>{
-        console.log( userParams)
-    }, [userParams])
-    useEffect(()=>{
-        get("/api/userparams").then(
-            (storedParams) => setUserParams(storedParams)
-        )
-    }, [])
+    // const [userParams, setUserParams] = useState()
+    // useEffect(()=>{
+    //     console.log( userParams)
+    // }, [userParams])
+    // useEffect(()=>{
+    //     get("/api/userparams").then(
+    //         (storedParams) => setUserParams(storedParams)
+    //     )
+    // }, [])
     
     return (<div>
         <ul>

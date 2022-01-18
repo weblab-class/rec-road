@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import ResultClasses from "../modules/ResultClasses.js";
 import ButtonBox from "../modules/ButtonBox.js";
@@ -19,15 +19,30 @@ import "./Results.css";
 
 const Results = (props) => {
 
+  const [stories, setStories] = useState([]);
+
+  useEffect(() => {
+    get("/api/courses").then((storyObjs) => {
+      setStories(storyObjs);
+    });
+  }, []);
+
   return (
     <>
       <div className="u-row-made-by-containers">
-      <ButtonBox
-      />
-      <ResultClasses
-        
-      />
-      <ResultRightColumn/>
+        <ButtonBox/>
+        <div>
+        {storyObjs}
+        </div>
+        {/* <ResultClasses
+          rec_classes={storyObjs}
+          other_classes={storyObjs}
+        /> */}
+
+        <ResultRightColumn
+          // prereqs=
+          // ocw_links=
+        />
 
 
       </div>

@@ -21,6 +21,27 @@ const App = () => {
   const [userId, setUserId] = useState(undefined);
   const [scores, setScores] = useState([]);
 
+  useEffect(() =>{
+    if (userId) {
+      console.log('User ID found')
+      get("/api/existsuserscores").then((existence_obj)=>{
+        const existence = existence_obj.existence
+        console.log(existence)
+        if (!existence) {
+          console.log(existence)
+          post("/api/postdefaultscores").then((scores) =>{
+            console.log(scores.allScores[0])
+          })
+        } 
+        // else {
+        //   get("/api/userscores").then(scores => {
+        //     console.log(scores)
+        //   })
+        // }
+      })
+    }
+  }, [userId])
+
   useEffect(() => {
     get("/api/whoami").then((user) => {
       if (user._id) {
@@ -31,13 +52,16 @@ const App = () => {
   }, []);
   // // useEffect(() =>{
 
-  // // post("/api/deletedefaultscores")
+
+  //post("/api/deletealluserscores")
+  //post("/api/deletedefaultscores")
   // // post("/api/deletecourses")
   // // add_classes()
   // // //addCourse_indexCourse_scoreCourse()
   // // }, [])
   //post("/api/deletecourses")
   //add_classes()
+  //post("/api/deletealladjacencies")
 
   useEffect(() => {
     document.title = "Rec Road";

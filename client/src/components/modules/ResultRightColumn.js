@@ -10,7 +10,7 @@ import "./ResultRightColumn.css";
  *
  * Proptypes
  * @param {list} prereqs list of dictionaries, should contain a list of classes
- * @param {list} ocw_links list of dictionaries, should contain a list of classes                      
+ * @param {list} ocw_links list of dictionaries, should contain a list of classes and their id, name, and ocw links                     
  */
 
 const ResultRightColumn = (props) => {
@@ -18,7 +18,7 @@ const ResultRightColumn = (props) => {
 
     return (
       <>
-        <div className = "u-side-container u-making-column-inside-container">
+        {/* <div className = "u-side-container u-making-column-inside-container">
           <MissingPrereq
               classes={props.prereqs}
           />
@@ -26,8 +26,8 @@ const ResultRightColumn = (props) => {
               classes={props.ocw_links}
           />
         
-        </div>
-  
+        </div> */}
+        <div>hi</div>
       </>
     );
   };
