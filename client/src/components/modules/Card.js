@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SingleStory from "./SingleStory.js";
-import { get } from "../../utilities";
+import { get, post } from "../../utilities";
 import Vote from "./Vote.js";
 import "./Card.css";
 
@@ -23,6 +23,9 @@ const Card = (props) => {
   const like = () => {
     if (props.userId) {
       setVote("Liked");
+      post("/api/updateuserscores", {course_id:props.course_id, vote:1.0}).then((res)=>{
+        console.log('Liked')
+      })
     } else {
       setVote("Please Login to Vote");
     }
@@ -31,6 +34,9 @@ const Card = (props) => {
   const dislike = () => {
     if (props.userId) {
       setVote("Disliked");
+      post("/api/updateuserscores", {course_id:props.course_id, vote:0.0}).then((res)=>{
+        console.log('Disliked')
+      })
     } else {
       setVote("Please Login to Vote");
     }

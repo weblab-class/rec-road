@@ -45,7 +45,7 @@ router.post("/postdefaultscores", (req, res) =>{
         if (!a){
           x = 0.5
         }
-        return x
+        return x/100000.
       })
       userscores.save().then((scores) => res.send(scores))
     })
@@ -95,22 +95,40 @@ router.get("/existsuserscores", auth.ensureLoggedIn, (req, res) => {
   })
 })
 
-router.post("/updateuserscores", auth.ensureLoggedIn, (req, res) => {
-  // req.body.vote should consist of a number, either 0 or 1. 
-  // 0 being downvote, 1 being upvote
-  // req.body.class_id should be the course id
-  const filter = {user_id:req.user._id}
-  const options = { upsert: true };
-  // const updateDoc = {
-  //   user_id: req.user._id,
-  //   allScores: ''
-  // }
-  UserScores.find({user_id:req.user._id}).then((existing_doc)=>{
-    const new_doc = existing_doc.assign({}, existing_doc)
 
-  }).then((updateDoc)=>{
-  UserScores.updateOne(filter, updateDoc, options).then((course) => res.send(course))
-  })
+
+router.post("/updateuserscores", auth.ensureLoggedIn, (req, res) => {
+  // req.body.vote should consist of a number, either 0.0 or 1.0 
+  // 0 being downvote, 1 being upvote
+  // req.body.course_id should be the course id
+  const filter = {user_id:req.user._id}
+  
+  UserScores.find(filter).then((old_doc)=>{
+    const new_scores = [...old_doc[0].allScores]
+    CourseIndices.find({}).then((all_course_indices)=>{
+      const all_indices = all_course_indices[0].all_course_id
+      //console.log(all_indices)
+      Adjacencies.findOne({course_id:req.body.course_id}).then((base_course)=>{
+          
+          const all_neighbors = base_course.course_adjacencies.concat([req.body.course_id])
+          //console.log(all_neighbors)
+          for (let i=0; i < all_neighbors.length; i++){
+            //console.log(all_neighbors[i])
+            const actual_index = all_indices.indexOf(all_neighbors[i])
+            console.log(new_scores[actual_index])
+            new_scores[actual_index] = (new_scores[actual_index] + req.body.vote)/(new_scores[actual_index]+1.00)
+            console.log(new_scores[actual_index])
+          }
+          console.log(all_neighbors)
+          const updateDoc = {
+            user_id: req.user._id,
+            allScores:new_scores
+          }
+          UserScores.updateOne(filter, updateDoc).then((updated_doc)=>res.send(updated_doc))
+        })
+      })
+    })
+  
 })
 
 router.post("/deletedefaultscores", (req, res) => {
@@ -284,8 +302,18 @@ router.get("/topfivecourses", (req, res) => {
   }
 
   const all_courses = [];
+
+  let USERDB = DefaultScores;
+  let filter = {};
+  if(!req.user){
+    USERDB = DefaultScores
+    filter = {}
+  } else{
+    USERDB = UserScores
+    filter = {user_id:req.user._id}
+  }
  
-  DefaultScores.find({}).then((scores) => {
+  USERDB.find(filter).then((scores) => {
     //console.log(scores)
     const top_indices = selectTopFiveIndices(scores[0].all_scores)
     //console.log(top_indices)

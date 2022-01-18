@@ -24,9 +24,11 @@ const App = () => {
   useEffect(() =>{
     if (userId) {
       console.log('User ID found')
+      
       get("/api/existsuserscores").then((existence_obj)=>{
         const existence = existence_obj.existence
         console.log(existence)
+        //post('/api/updateuserscores', {course_id:"1.00", vote:0.0})
         if (!existence) {
           console.log(existence)
           post("/api/postdefaultscores").then((scores) =>{
@@ -62,6 +64,7 @@ const App = () => {
   //post("/api/deletecourses")
   //add_classes()
   //post("/api/deletealladjacencies")
+  
 
   useEffect(() => {
     document.title = "Rec Road";
