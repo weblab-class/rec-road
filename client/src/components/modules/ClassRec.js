@@ -22,14 +22,14 @@ const ClassRec = (props) => {
         <ComponentHead
           content={props.content}
         />
-        {/* {props.classes.map((class) => (
+        {props.classes.map((class_dict) => (
           <ClassBrief
-            course_id={class.prompt}
-            course_name={class.value}
-            hours={class.hours}
-            credits={class.credits}
+            course_id={class_dict.prompt}
+            course_name={class_dict.value}
+            hours={class_dict.hours}
+            credits={class_dict.credits}
           />
-        ))} */}
+        ))} 
   
       </>
     );

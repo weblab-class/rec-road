@@ -18,13 +18,15 @@ const ResultRightColumn = (props) => {
 
     return (
       <>
-        <MissingPrereq
-            classes={props.prereqs}
-        />
-        <OCWResources
-            classes={props.ocw_links}
-        />
+        <div className = "u-side-container u-making-column-inside-container">
+          <MissingPrereq
+              classes={props.prereqs}
+          />
+          <OCWResources
+              classes={props.ocw_links}
+          />
         
+        </div>
   
       </>
     );

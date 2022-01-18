@@ -21,11 +21,11 @@
 :root {
   --primary: #fffed1;
   --primary--dim: #6987db;
-  --subheader: #fffd70;
+  --subheader: #fffeb0;
   --checkbox: #ffcd1d;
   --button-orange: #ffb13d;
   --button-grapefruit: #ff8761;
-  --background: #f9e9b9;
+  --background: #fff0b3;
   --darkgrey: #d4d4d4;
   --medgrey: #e0e0e0;
   --black: #000000;
@@ -108,13 +108,12 @@ form {
   flex-basis: 40%
 }
 
-.u-side-containers {
+.u-side-container {
   flex-basis: 30%
 }
 
-/* .u-making-column-inside-container {
+.u-making-column-inside-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-} */
+}
+
