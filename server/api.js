@@ -66,9 +66,9 @@ router.post('/savecourse', auth.ensureLoggedIn, (req, res)=>{
   
 })
 
-router.get("/topscoreclasses", auth.ensureLoggedIn, (req, res)=>{
-  res.send(heyo)
-})
+// router.get("/topscoreclasses", auth.ensureLoggedIn, (req, res)=>{
+//   res.send(heyo)
+// })
 
 router.get("/getalllikedislike", (req, res)=>{
   LikesDislikes.find({})
