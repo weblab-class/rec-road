@@ -22,7 +22,7 @@ const Results = (props) => {
   const [stories, setStories] = useState([]);
 
   useEffect(() => {
-    get("/api/topfivecourses").then((storyObjs) => {
+    get("/api/courses").then((storyObjs) => {
       setStories(storyObjs);
     });
   }, []);
@@ -31,9 +31,9 @@ const Results = (props) => {
     <>
       <div className="u-row-made-by-containers">
         <ButtonBox/>
-        {/* <div>
+        <div>
         {storyObjs}
-        </div> */}
+        </div>
         {/* <ResultClasses
           rec_classes={storyObjs}
           other_classes={storyObjs}
