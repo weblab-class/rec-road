@@ -24,8 +24,8 @@ const ClassRec = (props) => {
         />
         {props.classes.map((class_dict) => (
           <ClassBrief
-            course_id={class_dict.prompt}
-            course_name={class_dict.value}
+            course_id={class_dict.course_id}
+            course_name={class_dict.course_name}
             hours={class_dict.hours}
             credits={class_dict.credits}
           />
