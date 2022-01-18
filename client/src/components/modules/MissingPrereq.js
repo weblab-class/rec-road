@@ -22,12 +22,12 @@ const MissingPrereq = (props) => {
         <ComponentHead
           content={"Missing Prerequisites"}
         />
-        {/* {props.classes.map((class) => {
+        {props.classes.map((class_dict) => (
           <PrereqBrief
-            prompt={class.prompt}
-            prereqs={class.prereqs}
-          /> */}
-
+            prompt={class_dict.prompt}
+            prereqs={class_dict.prereqs}
+          />
+        ))}
   
       </>
     );

@@ -9,7 +9,7 @@ import "./PrereqBrief.css";
  *
  * Proptypes
  * @param {num} prompt course id
- * @param {list} prereqs list of id's of prereqs
+ * @param {list} prereqs list of id's of missing prereqs (if none, have empty array)
  *
  */
 const PrereqBrief = (props) => {
@@ -21,13 +21,22 @@ const PrereqBrief = (props) => {
         </p>
       </div>
 
-      <div>
-        {/* {props.prereqs.map((class) => (
-          <p>
-            {class}
-          </p>
-        ))} */}
-      </div>
+      if (props.prereqs.length===0) {
+        <div>
+          No missing prerequisites. 
+        </div>
+      }
+      else {
+        <div>
+          {props.prereqs.map((class_dict) => (
+            <p>
+              {class_dict}
+            </p>
+          ))}
+        </div>
+      }
+
+      
     </div>
   );
 };

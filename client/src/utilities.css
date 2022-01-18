@@ -21,11 +21,11 @@
 :root {
   --primary: #fffed1;
   --primary--dim: #6987db;
-  --subheader: #fffda3;
+  --subheader: #fffeb0;
   --checkbox: #ffcd1d;
   --button-orange: #ffb13d;
   --button-grapefruit: #ff8761;
-  --background: #f9e9b9;
+  --background: #fff0b3;
   --darkgrey: #d4d4d4;
   --medgrey: #e0e0e0;
   --black: #000000;
@@ -116,3 +116,4 @@ form {
   display: flex;
   flex-direction: column;
 }
+
