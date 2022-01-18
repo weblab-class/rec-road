@@ -1,41 +1,34 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
-const useCourseSearch = (query, pageNumber) => {
+const useCourseSearch = (pageNumber) => {
 
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [courses, setCourses] = useState([])
-    const [hasMore, setHasMore] = useState(false)
+    const [hasMore, setHasMore] = useState(true)
 
-    useEffect(()=>{
-        setCourses([])
-    }, [query])
+    // useEffect(()=>{
+    //     setCourses([])
+    // }, [query])
 
     useEffect(()=>{
         setLoading(true)
         setError(false)
         let cancel
-        axios(
-            {
-               method:"GET",
-               url: 'https://fireroad-dev.mit.edu/courses/all',
-               //params: {q:query, page:pageNumber} , 
-               cancelToken: new axios.CancelToken(c => cancel=c)
-            }
-        ).then(res =>{
+        get("api/topfivecourses").then(res =>{
             setCourses(prevCourses => {
-                return [...new Set([...prevCourses, ...res.data.map(b => b.title)])]
+                return [...new Set([...prevCourses, ...res])]
             })
-            setHasMore(res.data.docs.length > 0)
+            //setHasMore(res.data.docs.length > 0)
             setLoading(false)
-            console.log(res.data)
+            //console.log(res.data)
         }).catch(e => {
             if (axios.isCancel(e)) return
             setError(true)
         })
         return () => cancel()
-    }, [query, pageNumber])
+    }, [pageNumber])
     return {loading, error, courses, hasMore}
 }
 
