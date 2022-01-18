@@ -20,15 +20,19 @@ import "./Results.css";
 const Results = (props) => {
 
   const [stories, setStories] = useState([]);
+  const [storiesOther, setStoriesOther] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     get("/api/savedcourses").then((storyObjs) => {
-      //console.log(storyObjs[0])
-      setStories(storyObjs);
-      setLoading(false);
-    });
-  }, []);
+      get("/api/topscoreclasses").then((storyObjOther)=>{
+        setStories(storyObjs);
+        setStoriesOther(storyObjOther.filter(a=>!(stories.filter(course=>course.course_id===a.course_id).length>0)))
+        setLoading(false);
+        })
+        
+      })}, [])
+
   useEffect(()=>{
     console.log(stories[0])
   }, [stories])
@@ -44,7 +48,7 @@ const Results = (props) => {
         
         <ResultClasses
           rec_classes={stories}
-          other_classes={stories}
+          other_classes={storiesOther}
         />
 
         <ResultRightColumn

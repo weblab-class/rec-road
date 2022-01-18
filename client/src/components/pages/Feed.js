@@ -23,8 +23,11 @@ const Feed = (props) => {
 
   return (
     <>
-      <FeedSideBar />
-      <CentralFeed userId={props.userId} />
+      <div className="u-row-made-by-containers">
+        <FeedSideBar />
+        <CentralFeed userId={props.userId} />
+        <div className="u-result-rightbar u-hidden-text">There will be either any empty space or something else implemented here soon. </div>
+      </div>
     </>
   );
 };

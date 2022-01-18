@@ -18,15 +18,19 @@ const ResultClasses = (props) => {
     return (
       <>
         <div className = "u-center-container u-making-column-inside-container">
-          <ClassRec
-              content={"Saved Classes"}
-              classes={props.rec_classes}
-          />
-          <ClassRec
-              content={"Other Liked Classes"}
-              classes={props.other_classes}
-          />
-        
+          <div className="u-section-padding">
+            <ClassRec
+                content={"Saved Classes"}
+                classes={props.rec_classes}
+            />
+          </div>
+
+          <div className="u-section-padding">
+            <ClassRec
+                content={"Your Other Top Ranked Courses"}
+                classes={props.other_classes}
+            />
+          </div>
         </div>
         
   

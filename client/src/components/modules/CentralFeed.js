@@ -70,7 +70,7 @@ const CentralFeed = (props) => {
     storiesList = <div>{loading && "Loading..."}</div>;
   }
 
-  return <div>{storiesList}</div>;
+  return <div className="u-center-container">{storiesList}</div>;
 
   /*return (
     <div class="u-textCenter">

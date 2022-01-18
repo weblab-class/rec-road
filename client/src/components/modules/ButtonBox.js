@@ -12,7 +12,7 @@ const ButtonBox = (props) => {
 
   const [exported, setExported] = useState("");
   const export_clicked = () => {
-    setExported("Saved to FireRoad!");
+    setExported("To be implemented");
   };
   
 
@@ -30,12 +30,13 @@ const ButtonBox = (props) => {
           <div className="u-small-font">
             <p>{exported}</p>
           </div>
-
-          <div className="return-feed-button-container" onClick={export_clicked}>
-            <div className="return-feed-button-text">
-              Return to Feed
+          <a  href="/">
+            <div className="return-feed-button-container">
+              <div className="return-feed-button-text">
+                Return to Feed
+              </div>
             </div>
-          </div>
+          </a>
 
         </div>
       </div>

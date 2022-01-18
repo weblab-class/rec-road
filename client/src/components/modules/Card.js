@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SingleStory from "./SingleStory.js";
 import { get, post } from "../../utilities";
+import "../../utilities.css";
 import Vote from "./Vote.js";
 import "./Card.css";
 

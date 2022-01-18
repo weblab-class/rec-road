@@ -64,6 +64,14 @@ form {
   flex-direction: column;
 }
 
+.u-text-padding {
+  padding: 0px 50px;
+}
+
+.u-section-padding {
+  padding: 10px 0px 0px 0px;
+}
+
 .u-flex-justifyCenter {
   justify-content: center;
 }
@@ -124,6 +132,10 @@ form {
 .u-buttonbox {
   flex-basis: 20%;
   padding: 150px 50px 150px 50px;
+}
+
+.u-feed-sidebar {
+  flex-basis: 20%;
 }
 
 .u-making-column-inside-container {

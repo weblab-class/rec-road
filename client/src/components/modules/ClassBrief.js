@@ -16,7 +16,7 @@ import "./ClassBrief.css";
  */
 const ClassBrief = (props) => {
   return (
-    <div>
+    <div className="u-text-padding">
       <div>
         <p>
           <b>{props.course_id} {props.course_name}</b>
@@ -30,9 +30,10 @@ const ClassBrief = (props) => {
           <span className="u-second-item-in-a-line">
               {props.hours} hours
           </span>
+          
         </div>
         
-      
+      <hr></hr>
     </div>
   );
 };
