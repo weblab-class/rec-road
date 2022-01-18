@@ -10,16 +10,29 @@ import "./ButtonBox.css";
 
 const ButtonBox = (props) => {
 
+  const [exported, setExported] = useState("");
+  const export_clicked = () => {
+    setExported("Saved to FireRoad");
+  };
+  
 
-    return (
-      <>
-        <p>left</p>
-        {/* <div className="ButtonBox-container">
-          <div className="button-container">
+  return (
+    <>
+      <p>left</p>
 
+      <div className="ButtonBox-container">
+        <div className="fireroad-button-container" onClick={export_clicked}>
+          <div className="fireroad-button-text">
+            Export to FireRoad
           </div>
-        </div> */}
-      </>
+        </div>
+      </div>
+      <div>
+        <p>{exported}</p>
+      </div>
+
+
+    </>
     );
   };
   
