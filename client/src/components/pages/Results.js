@@ -23,7 +23,7 @@ const Results = (props) => {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    get("/api/topfivecourses").then((storyObjs) => {
+    get("/api/savedcourses").then((storyObjs) => {
       //console.log(storyObjs[0])
       setStories(storyObjs);
       setLoading(false);

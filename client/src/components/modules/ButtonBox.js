@@ -22,7 +22,7 @@ const ButtonBox = (props) => {
         <div className="ButtonBox-container">
           <div className="fireroad-button-container" onClick={export_clicked}>
             <div className="fireroad-button-text">
-              Export to FireRoad
+              Export to FireRoad!
             </div>
           </div>
           <div className="u-small-font">
