@@ -19,6 +19,8 @@ const CourseIndices = require("./models/courseIndices");
 const DefaultScores = require("./models/defaultScores");
 const UserScores = require("./models/userScores");
 const Adjacencies = require("./models/adjacencies")
+const LikesDislikes = require("./models/savedLikesDislikes")
+const SavedCourse = require("./models/savedCourse")
 
 // import authentication library
 const auth = require("./auth");
@@ -28,19 +30,76 @@ const router = express.Router();
 
 const socketManager = require("./server-socket");
 
+
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
   if (req.user) socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
 
+router.get('/allsavedcourses', (req, res)=>{
+  SavedCourse.find({}).then(course=>{
+    res.send(course)
+  })
+})
+
+router.get('/savedcourses', auth.ensureLoggedIn, (req, res)=>{
+  SavedCourse.find({course_id:req.query.course_id, user_id:req.user._id}).then(course=>{
+    res.send(course)
+  })
+})
+
+router.post('/savecourse', auth.ensureLoggedIn, (req, res)=>{
+  Course.findOne({course_id: req.body.course_id}).then(course=>{
+    SavedCourse.updateOne({course_id: req.query.course_id, user_id: req.user._id}, 
+      {user_id:  req.user._id,
+        course_id: course.course_id,
+        course_name: course.course_name,
+        description: course.description,
+        hours: course.hours,
+        credits: course.credits,
+        eval: course.eval},
+      {upsert:true}).then(course=>{
+        res.send(course)
+      })
+  })
+  
+})
+
+router.get("/topscoreclasses", auth.ensureLoggedIn, (req, res)=>{
+  res.send(heyo)
+})
+
+router.get("/getalllikedislike", (req, res)=>{
+  LikesDislikes.find({})
+  .then((story) => res.send(story));
+})
+
+
+router.post("/likeordislike", auth.ensureLoggedIn, (req, res)=>{
+  const newLikeDislike = {
+    course_id: req.body.course_id,
+    user_id: req.user._id,
+    course_like_neutral_dislike: req.body.course_like_neutral_dislike
+  }
+  console.log(req.body.course_id)
+  LikesDislikes.updateOne({course_id: req.body.course_id, user_id:req.user._id}, 
+                            newLikeDislike, {upsert:true}).then((story) => res.send(story));
+})
+
+router.get("/likeordislike", auth.ensureLoggedIn, (req, res)=>{
+  console.log(req.query.course_id)
+  LikesDislikes.find({course_id:req.query.course_id, user_id:req.user._id})
+  .then((story) => res.send(story));
+})
+
 router.post("/postdefaultscores", (req, res) =>{
     const userscores = new UserScores({
       user_id: req.user._id,
-      allScores: []
+      all_scores: []
     })
     DefaultScores.find({}).then((defaultscores) =>{
-      userscores.allScores = defaultscores[0].all_scores.map(a=>{
+      userscores.all_scores = defaultscores[0].all_scores.map(a=>{
         let x = a
         if (!a){
           x = 0.5
@@ -104,7 +163,7 @@ router.post("/updateuserscores", auth.ensureLoggedIn, (req, res) => {
   const filter = {user_id:req.user._id}
   
   UserScores.find(filter).then((old_doc)=>{
-    const new_scores = [...old_doc[0].allScores]
+    const new_scores = [...old_doc[0].all_scores]
     CourseIndices.find({}).then((all_course_indices)=>{
       const all_indices = all_course_indices[0].all_course_id
       //console.log(all_indices)
@@ -115,14 +174,14 @@ router.post("/updateuserscores", auth.ensureLoggedIn, (req, res) => {
           for (let i=0; i < all_neighbors.length; i++){
             //console.log(all_neighbors[i])
             const actual_index = all_indices.indexOf(all_neighbors[i])
-            console.log(new_scores[actual_index])
+            //console.log(new_scores[actual_index])
             new_scores[actual_index] = (new_scores[actual_index] + req.body.vote)/(new_scores[actual_index]+1.00)
-            console.log(new_scores[actual_index])
+            //console.log(new_scores[actual_index])
           }
-          console.log(all_neighbors)
+          //console.log(all_neighbors)
           const updateDoc = {
             user_id: req.user._id,
-            allScores:new_scores
+            all_scores:new_scores
           }
           UserScores.updateOne(filter, updateDoc).then((updated_doc)=>res.send(updated_doc))
         })
@@ -170,7 +229,7 @@ router.post("/course", (req, res) => {
 router.get("/courses", (req, res) => {
   // empty selector means get all documents
   Course.find({}).then((courses) => {
-    console.log(courses.length)
+    //console.log(courses.length)
     res.send(courses)});
 });
 
@@ -178,7 +237,7 @@ router.get("/courses", (req, res) => {
 router.get("/courseindices", (req, res) => {
   // empty selector means get all documents
   CourseIndices.find({}).then((index) => {
-    console.log(index[0].all_course_id.length)
+    //console.log(index[0].all_course_id.length)
     res.send(index)});
 });
 
@@ -242,7 +301,7 @@ router.get("/stories", (req, res) => {
   // empty selector means get all documents
   
   Story.find({}).then((stories) => {
-  console.log(typeof stories)
+  //console.log(typeof stories)
   res.send(stories)});
 
 });
@@ -257,7 +316,7 @@ router.get("/topfivecourses", (req, res) => {
 
 
   const selectTopFiveIndices = (scores) => {
-    console.log(scores.length)
+    //console.log(scores.length)
     //console.log(scores.slice(0,30))
     const scores_copy = scores.slice()
     for (let i=0; i < scores.length; i++){
@@ -297,9 +356,6 @@ router.get("/topfivecourses", (req, res) => {
     //console.log(top_idx)
     return top_idx
   }
-  const indices_to_classes = (indices) =>{
-    const class_id = indices.map()
-  }
 
   const all_courses = [];
 
@@ -328,12 +384,12 @@ router.get("/topfivecourses", (req, res) => {
       ))
       return top_indices.map(a=>indices[0].all_course_id[a])
     }).then((course_ids) =>{
-        console.log(course_ids)
+        //console.log(course_ids)
         Course.find({course_id:course_ids[0]}).then(course_0 => {
           all_courses.push(course_0[0])
           Course.find({course_id:course_ids[1]}).then(course_1 =>{
             all_courses.push(course_1[0])
-            console.log(all_courses)
+            //console.log(all_courses)
             Course.find({course_id:course_ids[2]}).then(course_2 =>{
               all_courses.push(course_2[0])
               Course.find({course_id:course_ids[3]}).then(course_3 =>{

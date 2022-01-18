@@ -22,10 +22,25 @@ const Card = (props) => {
 
   const like = () => {
     if (props.userId) {
-      setVote("Liked");
-      post("/api/updateuserscores", {course_id:props.course_id, vote:1.0}).then((res)=>{
-        console.log('Liked')
+      get("/api/likeordislike", {course_id:props.course_id}).then((rate_doc)=>{
+        console.log(rate_doc[0])
+        if ((rate_doc.length === 0)||(Math.abs(rate_doc[0].course_like_neutral_dislike-1.0)>=0.01)){
+          setVote("Liked");
+          post("/api/updateuserscores", {course_id:props.course_id, vote:1.0}).then((res)=>{
+            post("/api/likeordislike", {course_id:props.course_id, course_like_neutral_dislike:1.0}).then((res)=>{
+              console.log('Liked')
+            })
+          })
+        } else {
+          setVote("Like removed")
+          post("/api/updateuserscores", {course_id:props.course_id, vote:0.5}).then((res)=>{
+            post("/api/likeordislike", {course_id:props.course_id, course_like_neutral_dislike:0.5}).then((res)=>{
+              console.log('Like removed')
+            })
+          })
+        }
       })
+      
     } else {
       setVote("Please Login to Vote");
     }
@@ -33,19 +48,36 @@ const Card = (props) => {
 
   const dislike = () => {
     if (props.userId) {
-      setVote("Disliked");
-      post("/api/updateuserscores", {course_id:props.course_id, vote:0.0}).then((res)=>{
-        console.log('Disliked')
+      get("/api/likeordislike", {course_id:props.course_id}).then((rate_doc)=>{
+        if ((rate_doc.length === 0)||(Math.abs(rate_doc[0].course_like_neutral_dislike-0.0)>=0.01)){
+          setVote("Disliked");
+          post("/api/updateuserscores", {course_id:props.course_id, vote:0.0}).then((res)=>{
+            post("/api/likeordislike", {course_id:props.course_id, course_like_neutral_dislike:0.0}).then((res)=>{
+              console.log('Disliked')
+            })
+          })
+        } else {
+          setVote("Dislike removed")
+          post("/api/updateuserscores", {course_id:props.course_id, vote:0.5}).then((res)=>{
+            post("/api/likeordislike", {course_id:props.course_id, course_like_neutral_dislike:0.5}).then((res)=>{
+              console.log('Dislike removed')
+            })
+          })
+        }
       })
     } else {
       setVote("Please Login to Vote");
     }
   };
+
   const save = () => {
     if (props.userId) {
       setVote("Saved!");
+      post("/api/savecourse", {course_id:props.course_id}).then((res)=>{
+        console.log('Saved!')
+      })
     } else {
-      setVote("Please Login to Vote");
+      setVote("Please Login to Save");
     }
   };
 

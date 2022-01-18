@@ -32,7 +32,7 @@ const App = () => {
         if (!existence) {
           console.log(existence)
           post("/api/postdefaultscores").then((scores) =>{
-            console.log(scores.allScores[0])
+            console.log(scores.all_scores[0])
           })
         } 
         // else {

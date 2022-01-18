@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const UserScoreSchema = new mongoose.Schema({
   user_id: String,
-  allScores: [Number]
+  all_scores: [Number]
 });
 
 // compile model from schema
