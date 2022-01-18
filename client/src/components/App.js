@@ -27,10 +27,6 @@ const App = () => {
       
       get("/api/existsuserscores").then((existence_obj)=>{
         const existence = existence_obj.existence
-        console.log(existence)
-        get('/api/topscoreclasses').then((top_classes)=>{
-          console.log(top_classes)
-        })
         if (!existence) {
           console.log(existence)
           post("/api/postdefaultscores").then((scores) =>{
