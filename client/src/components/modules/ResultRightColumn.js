@@ -27,7 +27,7 @@ const ResultRightColumn = (props) => {
           />
         
         </div> */}
-        <div className = "u-result-rightbar u-making-column-inside-container">hi</div>
+        <div className = "u-result-rightbar u-making-column-inside-container u-hidden-text">The boxes with OCW links and missing prerequisites will be implemented soon.</div>
       </>
     );
   };

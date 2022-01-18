@@ -12,7 +12,7 @@ const ButtonBox = (props) => {
 
   const [exported, setExported] = useState("");
   const export_clicked = () => {
-    setExported("Saved to FireRoad");
+    setExported("Saved to FireRoad!");
   };
   
 
@@ -20,6 +20,8 @@ const ButtonBox = (props) => {
     <>
       <div className="u-buttonbox">
         <div className="ButtonBox-container">
+          
+          
           <div className="fireroad-button-container" onClick={export_clicked}>
             <div className="fireroad-button-text">
               Export to FireRoad

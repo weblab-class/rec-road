@@ -30,10 +30,10 @@ const NavBar = (props) => {
         )}
 
         {props.userId ? (<Link to="/results/" className="NavBar-link">
-          Results
+          Saved
         </Link>) : (
           <Link to="/login/" className="NavBar-link">
-            Results
+            Saved
           </Link> 
         )}
         {props.userId ? (
