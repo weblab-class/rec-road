@@ -52,7 +52,7 @@ form {
 }
 
 .u-small-font {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .u-flex {
@@ -102,6 +102,10 @@ form {
   color: var(--primary--dim);
 }
 
+.u-hidden-text {
+  color: var(--background)
+}
+
 .u-row-made-by-containers {
   display: flex;
   flex-direction: row;
@@ -131,13 +135,14 @@ form {
   background-color: var(--primary);
 }
 
-.u-line-of-items {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.u-first-item-in-a-line {
+  display: inline-block;
+  margin-right: 50px; 
+  width:200px; 
 }
 
-
-.u-item-in-a-line {
-  align-items: left;
+.u-second-item-in-a-line {
+  display:inline-block; 
+  width:200px; 
+  
 }
