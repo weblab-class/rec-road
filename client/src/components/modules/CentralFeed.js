@@ -41,7 +41,7 @@ const CentralFeed = (props) => {
   };
 
   useEffect(() => {
-    get("/api/courses").then((storyObjs) => {
+    get("/api/topfivecourses").then((storyObjs) => {
       setStories(storyObjs);
     });
   }, []);
