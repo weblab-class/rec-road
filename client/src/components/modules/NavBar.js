@@ -5,7 +5,7 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 import "./NavBar.css";
 
 // This identifies your web application to Google's authentication service
-const GOOGLE_CLIENT_ID = "876948856050-td58609auad8ed94lnprebpiimkndkt2.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "876948856050-a39gctf5i4do9bjsi909fvobvlqme95m.apps.googleusercontent.com";
 
 /**
  * The navigation bar at the top of all pages. Takes no props.
