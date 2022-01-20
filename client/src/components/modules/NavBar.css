@@ -8,9 +8,10 @@
 .NavBar-title:visited {
   text-align: center;
   color: var(--black);
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   text-decoration: none;
+  height: 32px;
 }
 
 .NavBar-linkContainer {
@@ -37,3 +38,17 @@
 .NavBar-link + .NavBar-link {
   margin-left: var(--m);
 }
+
+.Navbar-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.Navbar-padding {
+  padding: 0px 30px 3px 30px;
+
+}
+

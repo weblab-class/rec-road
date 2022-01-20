@@ -12,9 +12,9 @@ const GOOGLE_CLIENT_ID = "876948856050-m02nj91vv8in97n334u1ldug2010avfa.apps.goo
  */
 const NavBar = (props) => {
   return (
-    <nav className="NavBar-container">
-      <div className="u-inlineBlock"><Link to="/" className="NavBar-title">Rec Road</Link></div>
-      <div className="NavBar-linkContainer u-inlineBlock">
+    <nav className="NavBar-container Navbar-row Navbar-padding">
+      <div className="u-inlineBlock u-flex-alignLeft"><Link to="/" className="NavBar-title">Rec Road</Link></div>
+      <div className="NavBar-linkContainer u-inlineBlock u-flex-alignRight">
         <Link to="/" className="NavBar-link">
           Home
         </Link>

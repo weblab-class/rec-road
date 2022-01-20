@@ -26,8 +26,8 @@
   --button-orange: #ffb13d;
   --button-grapefruit: #ff8761;
   --background: #fff0b3;
-  --darkgrey: #d4d4d4;
-  --medgrey: #e0e0e0;
+  --darkgrey: #5e5e5e;
+  --medgrey: #9c9c9c;
   --black: #000000;
   --grey: #f7f7f7;
   --white: #fff;
@@ -78,6 +78,14 @@ form {
 
 .u-flex-alignCenter {
   align-items: center;
+}
+
+.u-flex-alignRight {
+  align-items: right;
+}
+
+.u-flex-alignLeft {
+  align-items: left;
 }
 
 .u-inlineBlock {
@@ -157,4 +165,14 @@ form {
   display:inline-block; 
   width:200px; 
   
+}
+
+.u-rounded-out-blocks {
+  border-radius: 15px;
+
+}
+
+.u-smooth-button {
+  box-shadow: 0.1px 0.5px 3px var(--darkgrey);
+  border-radius: 5px;
 }
