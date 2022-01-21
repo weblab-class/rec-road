@@ -19,7 +19,7 @@ const ButtonBox = (props) => {
   return (
     <>
       <div className="u-buttonbox">
-        <div className="ButtonBox-container u-rounded-out-blocks">
+        <div className="ButtonBox-container">
           
           
           <div className="fireroad-button-container u-smooth-button" onClick={export_clicked}>
@@ -27,7 +27,7 @@ const ButtonBox = (props) => {
               Export to FireRoad
             </div>
           </div>
-          <div className="u-small-font">
+          <div className="u-midsmall-font">
             <p>{exported}</p>
           </div>
           <a href="/">

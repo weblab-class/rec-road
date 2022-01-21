@@ -10,7 +10,7 @@ import "../../utilities.css";
  */
 
 const ComponentHead = (props) => {
-  return <div className="ComponentHead-container u-bold">{props.content}</div>;
+  return <div className="ComponentHead-container u-bold u-rounded-out-blocks">{props.content}</div>;
 };
 
 export default ComponentHead;

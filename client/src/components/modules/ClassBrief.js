@@ -4,6 +4,18 @@ import { get } from "../../utilities";
 import "../../utilities.css";
 import "./ClassBrief.css";
 
+const displayHours = (hours) => {
+  if (typeof hours == 'number') {
+    return Number.parseFloat(hours).toFixed(2) + " hours";
+  }
+  else if (!hours) {
+    return <span className="u-midsmall-font"><i>No available data on hours</i></span>;
+  }
+  else {
+    return "WARNING";
+  }
+}
+
 /**
  * ClassBrief is a component that renders each class-box in Results
  *
@@ -28,7 +40,7 @@ const ClassBrief = (props) => {
               {props.credits} units
           </span>
           <span className="u-second-item-in-a-line">
-              {props.hours} hours
+              {displayHours(props.hours)}
           </span>
           
         </div>

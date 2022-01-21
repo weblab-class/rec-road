@@ -19,7 +19,7 @@ const ClassRec = (props) => {
 
     return (
       <>
-        <div className="u-component-body">
+        <div className="u-component-body u-rounded-out-blocks">
           <ComponentHead
             content={props.content}
           />

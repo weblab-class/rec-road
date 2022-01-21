@@ -20,7 +20,7 @@ const ResultClasses = (props) => {
         <div className = "u-center-container u-making-column-inside-container">
           <div className="u-section-padding">
             <ClassRec
-                content={"Saved Courses"}
+                content={"Saved Classes"}
                 classes={props.rec_classes}
             />
           </div>

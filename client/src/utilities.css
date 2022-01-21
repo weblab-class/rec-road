@@ -26,7 +26,7 @@
   --button-orange: #ffb13d;
   --button-grapefruit: #ff8761;
   --background: #fff0b3;
-  --darkgrey: #5e5e5e;
+  --darkgrey: #333333;
   --medgrey: #9c9c9c;
   --black: #000000;
   --grey: #f7f7f7;
@@ -45,6 +45,11 @@ body {
   font-weight: 100;
   font-size: 20px;
   background-color: var(--background);
+  color: var(--darkgrey);
+}
+
+b {
+  color: var(--black);
 }
 
 form {
@@ -53,6 +58,10 @@ form {
 
 .u-small-font {
   font-size: 16px;
+}
+
+.u-midsmall-font {
+  font-size: 18px;
 }
 
 .u-flex {
@@ -163,12 +172,12 @@ form {
 
 .u-second-item-in-a-line {
   display:inline-block; 
-  width:200px; 
+  width:400px; 
   
 }
 
 .u-rounded-out-blocks {
-  border-radius: 15px;
+  border-radius: 10px;
 
 }
 
