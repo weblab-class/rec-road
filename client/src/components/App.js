@@ -98,6 +98,7 @@ const App = () => {
             userId={userId}
             handleLogin={handleLogin}
             handleLogout={handleLogout}
+            redirectPage="/"
           />
           <History path="/history/" userId={userId}></History>
           <PageNotFound default />
