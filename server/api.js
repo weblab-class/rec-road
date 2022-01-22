@@ -37,6 +37,12 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
+router.post("/removesavedcourse", auth.ensureLoggedIn, (req, res) => {
+  SavedCourse.deleteOne({user_id:req.user._id, course_id:req.body.course_id}).then((response)=>{
+    res.send(response)
+  })
+}) 
+
 router.get('/allsavedcourses', (req, res)=>{
   SavedCourse.find({}).then(course=>{
     res.send(course)
