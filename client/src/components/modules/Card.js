@@ -100,7 +100,7 @@ const Card = (props) => {
   };
 
   return (
-    <div className="u-component-body u-rounded-out-blocks">
+    <div className="u-component-body u-rounded-out-blocks u-subtle-block-shadow">
       <SingleStory
         course_id={props.course_id}
         course_name={props.course_name}
