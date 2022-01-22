@@ -65,7 +65,7 @@ const App = () => {
   
 
   useEffect(() => {
-    document.title = "Rec Road";
+    document.title = "RecRoad";
   }, []);
 
   const handleLogin = (res) => {
