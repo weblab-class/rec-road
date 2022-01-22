@@ -19,7 +19,7 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
-  const [scores, setScores] = useState([]);
+  // const [scores, setScores] = useState([]);
 
   useEffect(() =>{
     if (userId) {
@@ -90,8 +90,10 @@ const App = () => {
       <div>
         <Router>
           <Feed path="/" userId={userId} />
-          <Profile path="/profile:userId" />
-          <Results path="/results/" userId={userId} results={["hi", "hello", "howdy"]} />
+          <Profile path="/profile/:userId" handleLogin={handleLogin}
+            handleLogout={handleLogout}/>
+          <Results path="/results/" userId={userId} results={["hi", "hello", "howdy"]} handleLogin={handleLogin}
+            handleLogout={handleLogout}/>
           <Friends path="/friends/" userId={userId} />
           <Login
             path="/login/"
@@ -100,7 +102,8 @@ const App = () => {
             handleLogout={handleLogout}
             redirectPage="/"
           />
-          <History path="/history/" userId={userId}></History>
+          <History path="/history/" userId={userId} handleLogin={handleLogin}
+            handleLogout={handleLogout}></History>
           <PageNotFound default />
         </Router>
       </div>

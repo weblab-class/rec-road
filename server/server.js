@@ -56,6 +56,8 @@ mongoose
 const app = express();
 app.use(validator.checkRoutes);
 
+
+
 // allow us to process POST requests
 app.use(express.json());
 
@@ -107,3 +109,4 @@ socketManager.init(server);
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
+

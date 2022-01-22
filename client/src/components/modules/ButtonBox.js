@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import axios from "axios";
 import { get } from "../../utilities";
 import "../../utilities.css";
 import "./ButtonBox.css";
@@ -12,7 +12,10 @@ const ButtonBox = (props) => {
 
   const [exported, setExported] = useState("");
   const export_clicked = () => {
-    setExported("To be implemented");
+    axios.get('https://fireroad-dev.mit.edu/login', {redirect: 'http://localhost:5000/results/'}).then((response)=>{
+      console.log(response)
+    })
+    setExported("Exported to FireRoad");
   };
   
 

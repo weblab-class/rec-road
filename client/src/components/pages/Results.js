@@ -8,6 +8,9 @@ import { get } from "../../utilities";
 import "../../utilities.css";
 import "./Results.css";
 
+const GOOGLE_CLIENT_ID = "876948856050-m02nj91vv8in97n334u1ldug2010avfa.apps.googleusercontent.com";
+
+
 /**
  * Results page
  *
@@ -19,10 +22,42 @@ import "./Results.css";
 
 const Results = (props) => {
 
+  if (!props.userId) {
+    return (
+    <>
+      <div className="u-textCenter">
+        <h2>Please login first:</h2>
+
+        {props.userId ? (
+          <GoogleLogout
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Logout"
+            onLogoutSuccess={props.handleLogout}
+            onFailure={(err) => console.log(err)}
+          />
+        ) : (
+          <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={props.handleLogin}
+            onFailure={(err) => console.log(err)}
+          />
+        )}
+      </div>
+    </>
+    )
+  }
+
+
   const [stories, setStories] = useState([]);
   const [storiesOther, setStoriesOther] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isCourseDeleted, setIsCourseDeleted] = useState(false);
+
+  // useEffect(() => {
+  //   document.title = "Profile Page";
+  //   get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
+  // }, []);
 
   useEffect(() => {
     get("/api/savedcourses").then((storyObjs) => {
@@ -38,6 +73,7 @@ const Results = (props) => {
     console.log(stories[0])
   }, [stories])
 
+  
   if (isLoading) {
             return <div className="App">Loading...</div>;
           }

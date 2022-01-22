@@ -19,23 +19,18 @@ const NavBar = (props) => {
           Home
         </Link>
 
-        {/* {props.userId ? (
-          <Link to={`/profile/${props.userId}`} className="NavBar-link">
+        {props.userId ? (<Link to={`/profile/${props.userId}`} className="NavBar-link">
             Profile
           </Link>
         ) : (
-          <Link to='/login/' className="NavBar-link">
+          <Link to={`/login/`} className="NavBar-link">
             Profile
           </Link>
-        )} */}
-
-        {props.userId ? (<Link to="/results/" className="NavBar-link">
-          Saved
-        </Link>) : (
-          <Link to="/login/" className="NavBar-link">
-            Saved
-          </Link> 
         )}
+
+        <Link to="/results/" className="NavBar-link">
+          Saved
+        </Link>
         {/* {props.userId ? (
           <Link to="/history/" className="NavBar-link">
             History
