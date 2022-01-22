@@ -1,0 +1,15 @@
+.buttonContainer {
+    padding: 0 45%;
+}
+
+.remove-save-button {
+  background-color: #ffdc5e;
+  padding: 0px 10px 0px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+
+.to-the-right {
+    float: right;
+}

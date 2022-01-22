@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
-import { get } from "../../utilities";
+import { get, post } from "../../utilities";
 import "../../utilities.css";
 import "./ClassBrief.css";
 
@@ -16,6 +16,8 @@ const displayHours = (hours) => {
   }
 }
 
+
+
 /**
  * ClassBrief is a component that renders each class-box in Results
  *
@@ -27,12 +29,45 @@ const displayHours = (hours) => {
  *
  */
 const ClassBrief = (props) => {
+
+  const [saveRemove, setSaveRemove] = useState("");
+  const remove_save = () => {
+    post('/api/removesavedcourse', {course_id:props.course_id}).then(result=>{
+      console.log(result)
+      props.remove_course_function(true)
+    })
+    
+  };
+
+  const removeButton = () => {
+    if (props.remove==="saved") {
+      return (
+        <div>
+        <p>
+          <b>{props.course_id} {props.course_name}</b>
+          <span className="to-the-right" onClick={remove_save}>
+            <span className="remove-save-button u-smooth-small-button">
+              Remove
+            </span>
+          </span>
+        </p>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div><p>
+          <b>{props.course_id} {props.course_name}</b>
+        </p></div>
+      )
+    }
+  }
+
+//what to do with remove_course_function????
   return (
     <div className="u-text-padding">
       <div>
-        <p>
-          <b>{props.course_id} {props.course_name}</b>
-        </p>
+        {removeButton()}
       </div>
 
         <div>

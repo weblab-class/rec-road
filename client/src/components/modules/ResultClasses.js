@@ -20,15 +20,19 @@ const ResultClasses = (props) => {
         <div className = "u-center-container u-making-column-inside-container">
           <div className="u-section-padding">
             <ClassRec
+                remove_course_function={props.remove_course_function}
                 content={"Saved Classes"}
                 classes={props.rec_classes}
+                remove={"saved"}
             />
           </div>
 
           <div className="u-section-padding">
             <ClassRec
+                remove_course_function={props.remove_course_function}
                 content={"Your Other Top Ranked Courses"}
                 classes={props.other_classes}
+                remove={"ranked"}
             />
           </div>
         </div>

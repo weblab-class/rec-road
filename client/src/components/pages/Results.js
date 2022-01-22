@@ -22,6 +22,7 @@ const Results = (props) => {
   const [stories, setStories] = useState([]);
   const [storiesOther, setStoriesOther] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [isCourseDeleted, setIsCourseDeleted] = useState(false);
 
   useEffect(() => {
     get("/api/savedcourses").then((storyObjs) => {
@@ -30,8 +31,8 @@ const Results = (props) => {
         setStoriesOther(storyObjOther.filter(a=>!(stories.filter(course=>course.course_id===a.course_id).length>0)))
         setLoading(false);
         })
-        
-      })}, [])
+        setIsCourseDeleted(false);  
+      })}, [isCourseDeleted])
 
   useEffect(()=>{
     console.log(stories[0])
@@ -47,6 +48,7 @@ const Results = (props) => {
         <ButtonBox/>
         
         <ResultClasses
+          remove_course_function={setIsCourseDeleted}
           rec_classes={stories}
           other_classes={storiesOther}
         />

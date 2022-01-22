@@ -25,10 +25,12 @@ const ClassRec = (props) => {
           />
           {props.classes.map((class_dict) => (
             <ClassBrief
+              remove_course_function={props.remove_course_function}
               course_id={class_dict.course_id}
               course_name={class_dict.course_name}
               hours={class_dict.hours}
               credits={class_dict.credits}
+              remove={props.remove}
             />
           ))} 
         </div>

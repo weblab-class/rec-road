@@ -26,7 +26,7 @@
   --button-orange: #ffb13d;
   --button-grapefruit: #ff8761;
   --background: #fff0b3;
-  --darkgrey: #333333;
+  --darkgrey: #373737;
   --medgrey: #9c9c9c;
   --black: #000000;
   --grey: #f7f7f7;
@@ -90,10 +90,12 @@ form {
 }
 
 .u-flex-alignRight {
+  display: flex;
   align-items: right;
 }
 
 .u-flex-alignLeft {
+  display: flex;
   align-items: left;
 }
 
@@ -172,7 +174,7 @@ form {
 
 .u-second-item-in-a-line {
   display:inline-block; 
-  width:400px; 
+  width:250px; 
   
 }
 
