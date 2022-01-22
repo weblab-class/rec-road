@@ -185,3 +185,16 @@ form {
   box-shadow: 0.1px 0.5px 3px var(--darkgrey);
   border-radius: 5px;
 }
+
+.u-smooth-button:hover {
+  cursor: pointer;
+}
+
+.u-smooth-small-button {
+  box-shadow: 0.1px 0.3px 1px var(--darkgrey);
+  border-radius: 5px;
+}
+
+.u-smooth-small-button:hover {
+  cursor: pointer;
+}

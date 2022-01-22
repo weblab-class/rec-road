@@ -100,7 +100,7 @@ const Card = (props) => {
   };
 
   return (
-    <div className="u-component-body u-rounded-out-blocks">
+    <div className="u-component-body u-rounded-out-blocks u-subtle-block-shadow">
       <SingleStory
         course_id={props.course_id}
         course_name={props.course_name}
@@ -112,15 +112,15 @@ const Card = (props) => {
 
       <div className="row">
         <div className="Card-buttonContainer column" onClick={like}>
-          <div className="Card-upbutton" />
+          <div className="Card-upbutton u-smooth-small-button" />
         </div>
 
         <div className="Card-buttonContainer column" onClick={dislike}>
-          <div className="Card-downbutton" />
+          <div className="Card-downbutton u-smooth-small-button" />
         </div>
 
         <div className="Card-buttonContainer column" onClick={save}>
-          <div className="Card-savebutton"> Save </div>
+          <div className="Card-savebutton u-smooth-small-button"> Save </div>
         </div>
       </div>
       <div>
