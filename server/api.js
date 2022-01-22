@@ -37,6 +37,7 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
+
 router.get('/allsavedcourses', (req, res)=>{
   SavedCourse.find({}).then(course=>{
     res.send(course)
