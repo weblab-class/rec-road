@@ -2,6 +2,8 @@
   text-align: center;
   padding: var(--s) var(--m);
   background-color: var(--primary);
+  position: fixed;
+  width: 96%;
 }
 
 .NavBar-title,
@@ -49,6 +51,4 @@
 
 .Navbar-padding {
   padding: 0px 30px 3px 30px;
-
 }
-
