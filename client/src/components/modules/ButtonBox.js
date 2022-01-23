@@ -12,7 +12,7 @@ const ButtonBox = (props) => {
 
   const [exported, setExported] = useState("");
   const export_clicked = () => {
-    axios.get('https://fireroad-dev.mit.edu/login', {redirect: 'http://localhost:5000/results/'}).then((response)=>{
+    axios.get('https://fireroad-dev.mit.edu/login', {redirect: 'https://recroad.herkouapp.com/results/'}).then((response)=>{
       console.log(response)
     })
     setExported("Exported to FireRoad");
