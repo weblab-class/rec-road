@@ -6,7 +6,7 @@ import CentralFeed from "../modules/CentralFeed";
 import { get } from "../../utilities";
 
 /**
- * Feed is a component for displaying the feed
+ * Feed is a page for displaying the feed
  *
  * Proptypes
  * @param {string} userId of the user

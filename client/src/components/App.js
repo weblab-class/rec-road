@@ -8,6 +8,7 @@ import Feed from "./pages/Feed.js";
 import Profile from "./pages/Profile.js";
 import Results from "./pages/Results.js";
 import Login from "./pages/Login.js";
+import History from "./pages/History.js";
 import add_classes from "./add_classes.js";
 //import {addCourse_indexCourse_scoreCourse} from "./db_catchall";
 import "../utilities.css";
