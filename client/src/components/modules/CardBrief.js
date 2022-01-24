@@ -19,6 +19,23 @@ import "./Card.css";
 const CardBrief = (props) => {
   const [vote, setVote] = useState("");
   const [user, setUser] = useState();
+  useEffect(()=>{
+    get("/api/likeordislike", { course_id: props.course_id }).then((rate_doc)=>{
+      if(
+        Math.abs(rate_doc[0].course_like_neutral_dislike - 1.0) <= 0.0001
+      ){
+        setVote("Liked")
+      } else if(
+        Math.abs(rate_doc[0].course_like_neutral_dislike - .5) <= 0.0001
+      ){
+        setVote("Neutral")
+      } else if(
+        Math.abs(rate_doc[0].course_like_neutral_dislike - 0.0) <= 0.0001
+      ){
+        setVote("Disliked")
+      }
+    })
+  }, [])
 
   const like = () => {
     if (props.userId) {
