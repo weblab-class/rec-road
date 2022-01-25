@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import { get } from "../../utilities";
 import ProfileItem from "./ProfileItem"
 
+/**
+ * ProfileBox is a box in the left sidebar that lists the settings options that you can toggle
+ *
+ * No props
+ *                       
+ */
+
 const ProfileBox = () => {
     // const [userParams, setUserParams] = useState()
     // useEffect(()=>{

@@ -31,7 +31,8 @@ const NavBar = (props) => {
         <Link to="/results/" className="NavBar-link">
           Saved
         </Link>
-        {/* {props.userId ? (
+        
+        {props.userId ? (
           <Link to="/history/" className="NavBar-link">
             History
           </Link>
@@ -40,7 +41,7 @@ const NavBar = (props) => {
             History
           </Link>
         )}
-        {props.userId ? (<Link to="/friends/" className="NavBar-link">
+        {/* {props.userId ? (<Link to="/friends/" className="NavBar-link">
           Friends
         </Link>) : (
           <Link to="/login/" className="NavBar-link">

@@ -43,6 +43,25 @@ router.post("/removesavedcourse", auth.ensureLoggedIn, (req, res) => {
   })
 }) 
 
+router.get('/alliinteractedcourses', (req, res)=>{
+  const iterateCourses = async (courses)=>{
+    const course_full_list = []
+    for (let i=0; i < courses.length; i++){
+      const course_full = await Course.findOne({course_id:courses[i].course_id})
+      course_full_list.push(course_full)
+      //console.log(course_full)
+      //console.log(courses)
+    }
+    return course_full_list
+  }
+  LikesDislikes.find({user_id:req.user._id}).then((all_interacted_courses)=>{
+    const courses_full = iterateCourses(all_interacted_courses)
+    return courses_full
+  }).then((response)=>{
+    res.send(response)
+  })
+})
+
 router.get('/allsavedcourses', (req, res)=>{
   SavedCourse.find({}).then(course=>{
     res.send(course)
