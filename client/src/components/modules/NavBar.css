@@ -2,6 +2,9 @@
   text-align: center;
   padding: var(--s) var(--m);
   background-color: var(--primary);
+}
+
+.NavBar-fixed {
   position: fixed;
   width: 96%;
 }
