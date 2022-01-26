@@ -35,31 +35,25 @@ const add_classes = ()  => {
                 eval: courses.data[i].rating}
             // await post('/api/adjacencylists', {course_id: courses.data[i].subject_id,
             //     course_adjacencies: courses.data[i].related_subjects}) 
-            console.log(i);
             //courses.data[i].related_courses
             // get('/api/querycourses', {course_id: courses.data[i].subject_id}).then(course =>{
             //     // if (course.length == 0) {
             //await post('/api/course', body)
-            //     //     console.log('Course added')
             //     // }
-            //     console.log('Course here')
             // }).catch((err) => {
             //     post('/api/course', body)
             // })
             
             //post('/api/course', body)//.then((res)=>{
-            //    console.log(body.course_id)
             //}
                 
             //)
-            //console.log(body.course_id)
           }
         // const average = compute_avg_with_null(score_arr)
         // for (let i = 0; i < courses.data.length; i++){
         //     if (!score_arr[i]){
         //         score_arr[i] = average
         //     }
-        //     console.log(i)
         // }
         const body2 = {all_scores: score_arr}
         //const body2 = {all_scores: score_arr.slice(0, Math.floor(score_arr.length/2))}
@@ -68,17 +62,13 @@ const add_classes = ()  => {
     useEffect(() =>{
         
         setCount(count+1)
-        //console.log(courses.data[0])
-        //console.log(count)
         
         const adjacencies = {}
         if (count === 1) {
-            console.log(courses.data.length)
             iterateOverClasses();
         
           //const body = {all_course_id: index_arr}
           //post('/api/courseindices', body)
-        //console.log(score_arr)
         //const body2 = {all_scores: score_arr}
         //post('/api/defaultscores', body2)
         }

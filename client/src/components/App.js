@@ -24,12 +24,10 @@ const App = () => {
 
   useEffect(() =>{
     if (userId) {
-      console.log('User ID found')
       
       get("/api/existsuserscores").then((existence_obj)=>{
         const existence = existence_obj.existence
         if (!existence) {
-          console.log(existence)
           post("/api/postdefaultscores").then((scores) =>{
             console.log(scores.all_scores[0])
           })
