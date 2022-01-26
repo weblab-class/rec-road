@@ -85,11 +85,11 @@ const App = () => {
       <div>
         <Router>
           <Feed path="/" userId={userId} />
-          <Profile path="/profile/:userId" handleLogin={handleLogin}
-            handleLogout={handleLogout}/>
+          {/* <Profile path="/profile/:userId" handleLogin={handleLogin}
+            handleLogout={handleLogout}/> */}
           <Results path="/results/" userId={userId} results={["hi", "hello", "howdy"]} handleLogin={handleLogin}
             handleLogout={handleLogout}/>
-          <Friends path="/friends/" userId={userId} />
+          {/* <Friends path="/friends/" userId={userId} /> */}
           <Login
             path="/login/"
             userId={userId}

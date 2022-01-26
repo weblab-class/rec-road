@@ -22,14 +22,14 @@ const NavBar = (props) => {
           Home
         </Link>
 
-        {props.userId ? (<Link to={`/profile/${props.userId}`} className="NavBar-link">
+        {/* {props.userId ? (<Link to={`/profile/${props.userId}`} className="NavBar-link">
             Profile
           </Link>
         ) : (
           <Link to={`/login/`} className="NavBar-link">
             Profile
           </Link>
-        )}
+        )} */}
 
         <Link to="/results/" className="NavBar-link">
           Saved
