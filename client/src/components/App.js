@@ -29,12 +29,11 @@ const App = () => {
         const existence = existence_obj.existence
         if (!existence) {
           post("/api/postdefaultscores").then((scores) =>{
-            console.log(scores.all_scores[0])
+            //pass
           })
         } 
         // else {
         //   get("/api/userscores").then(scores => {
-        //     console.log(scores)
         //   })
         // }
       })
@@ -68,12 +67,9 @@ const App = () => {
   }, []);
 
   const handleLogin = (res) => {
-    console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
-    console.log(`User token is ${userToken}`);
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
-      console.log(`User ID is ${user._id}`);
     });
   };
 

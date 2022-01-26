@@ -25,15 +25,12 @@
                 credits: courses.data[i].total_units,
                 eval: courses.data[i].rating})
             newCourse.save().then((course) => {
-                console.log(course)
             })
         const courseIndices = new CourseIndices({all_course_id: index_arr})
         const courseScores = new DefaultScores({all_scores: score_arr})
         courseIndices.save().then((index) => {
-            console.log(index)
         })
         courseScores.save().then((index) =>{
-            console.log(index)
         })
             
           }
@@ -46,7 +43,6 @@
                params: {full:true} , 
             }
         ).then((courses) =>{
-            console.log(courses.data)
             add_index_score(courses)
         })
     }, [])

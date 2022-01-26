@@ -33,7 +33,6 @@ const ClassBrief = (props) => {
   const [saveRemove, setSaveRemove] = useState("");
   const remove_save = () => {
     post('/api/removesavedcourse', {course_id:props.course_id}).then(result=>{
-      console.log(result)
       props.remove_course_function(true)
     })
     
