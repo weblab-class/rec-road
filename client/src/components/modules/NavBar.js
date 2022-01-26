@@ -4,6 +4,9 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 import "./NavBar.css";
 
+// Citations
+// https://stackoverflow.com/questions/19056725/how-to-center-align-text-in-navigation-bar-of-website-in-css/19056803
+
 // This identifies your web application to Google's authentication service
 const GOOGLE_CLIENT_ID = "876948856050-m02nj91vv8in97n334u1ldug2010avfa.apps.googleusercontent.com";
 

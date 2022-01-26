@@ -70,7 +70,6 @@ const Results = (props) => {
       })}, [isCourseDeleted])
 
   useEffect(()=>{
-    console.log(stories[0])
   }, [stories])
 
   

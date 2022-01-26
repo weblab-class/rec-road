@@ -24,14 +24,14 @@ const ButtonBox = (props) => {
         <div className="ButtonBox-container">
           
           
-          <div className="fireroad-button-container u-smooth-button" onClick={export_clicked}>
+          {/* <div className="fireroad-button-container u-smooth-button" onClick={export_clicked}>
             <div className="fireroad-button-text">
               Export to FireRoad
             </div>
           </div>
           <div className="u-midsmall-font">
             <p>{exported}</p>
-          </div>
+          </div> */}
           <a href="/">
             <div className="return-feed-button-container u-smooth-button">
               <div className="return-feed-button-text">

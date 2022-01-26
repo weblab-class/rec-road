@@ -3,6 +3,8 @@ import { get, post } from "../utilities";
 //import {classData} from "./full"
 import axios from  'axios'
 
+// Citations
+// https://stackoverflow.com/questions/351409/how-to-append-something-to-an-array
 
 
 const add_classes = ()  => {

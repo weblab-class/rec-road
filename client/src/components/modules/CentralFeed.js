@@ -5,6 +5,10 @@ import { get } from "../../utilities";
 import useCourseSearch from "./useCourseSearch.js";
 import "./CentralFeed.css";
 
+// Citations
+// https://stackoverflow.com/questions/63711013/how-to-trigger-useeffects-before-render-in-react
+
+
 /**
  * CentralFeed is a component for displaying the center part of the feed
  *

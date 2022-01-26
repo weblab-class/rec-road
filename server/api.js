@@ -5,6 +5,11 @@
 |
 | This file defines the routes for your server.
 |
+| Citations
+| https://stackoverflow.com/questions/183161/whats-the-best-way-to-break-from-nested-loops-in-javascript
+| https://stackoverflow.com/questions/351409/how-to-append-something-to-an-array
+| https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+| https://stackoverflow.com/questions/41445220/chaining-promises-with-promises-inside-then
 */
 
 const express = require("express");
@@ -410,9 +415,7 @@ router.get("/topfivecourses", (req, res) => {
     return top_indices
   }).then(top_indices => {
     CourseIndices.find({}).then((indices) =>{
-      console.log(top_indices.map((a)=>
-        indices[0].all_course_id[a]
-      ))
+
       return top_indices.map(a=>indices[0].all_course_id[a])
     }).then((course_ids) =>{
         Course.find({course_id:course_ids[0]}).then(course_0 => {

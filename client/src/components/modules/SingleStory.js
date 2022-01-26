@@ -3,6 +3,10 @@ import { Link } from "@reach/router";
 import ComponentHead from "./ComponentHead.js";
 import "../../utilities.css";
 
+// Citations
+// https://stackoverflow.com/questions/4293230/how-do-i-convert-an-integer-to-a-float-in-javascript
+// https://stackoverflow.com/questions/3390396/how-can-i-check-for-undefined-in-javascript
+
 const display = (info_item) => {
   if (typeof info_item == 'number') {
     return Number.parseFloat(info_item).toFixed(2);
