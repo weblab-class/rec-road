@@ -8,6 +8,7 @@ import "./CentralFeed.css";
 // Citations
 // https://stackoverflow.com/questions/63711013/how-to-trigger-useeffects-before-render-in-react
 
+// Infinite scroll logic: https://www.youtube.com/watch?v=NZKUirTtxcg
 
 /**
  * CentralFeed is a component for displaying the center part of the feed

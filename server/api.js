@@ -10,6 +10,7 @@
 | https://stackoverflow.com/questions/351409/how-to-append-something-to-an-array
 | https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
 | https://stackoverflow.com/questions/41445220/chaining-promises-with-promises-inside-then
+ https://docs.mongodb.com/manual/reference/method/ 
 */
 
 const express = require("express");
@@ -95,6 +96,7 @@ router.post('/savecourse', auth.ensureLoggedIn, (req, res)=>{
 })
 
 router.get("/topscoreclasses", auth.ensureLoggedIn, (req, res)=>{
+  // https://stackoverflow.com/questions/483420/easiest-way-to-derive-subset-array-of-highest-10-values
   function top10(arr) {
     var results = [[0,Number.MAX_VALUE],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
   

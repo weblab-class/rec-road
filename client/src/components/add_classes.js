@@ -5,7 +5,7 @@ import axios from  'axios'
 
 // Citations
 // https://stackoverflow.com/questions/351409/how-to-append-something-to-an-array
-
+// https://www.youtube.com/watch?v=NZKUirTtxcg
 
 const add_classes = ()  => {
     const [courses, setCourses] = useState({data:[5,4,3]})
@@ -24,6 +24,7 @@ const add_classes = ()  => {
     }
 
     const iterateOverClasses = async () => {
+        // Akshaj
         let index_arr = []
         let score_arr = []
         for (let i = 0; i < courses.data.length; i++) {

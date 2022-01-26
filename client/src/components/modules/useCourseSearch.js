@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { get } from "../../utilities";
 
+// This file is implemented according to the infinite scroll logic in https://www.youtube.com/watch?v=NZKUirTtxcg 
+
 const useCourseSearch = (pageNumber) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

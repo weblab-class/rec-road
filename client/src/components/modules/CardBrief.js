@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import StoryBrief from "./SingleStory.js";
+import StoryBrief from "./StoryBrief.js";
 import { get, post } from "../../utilities";
 import "../../utilities.css";
 import Vote from "./Vote.js";
@@ -53,7 +53,7 @@ const CardBrief = (props) => {
             });
           });
         } else {
-          setVote("Like removed");
+          setVote("Neutral");
           post("/api/updateuserscores", { course_id: props.course_id, vote: 0.5 }).then((res) => {
             post("/api/likeordislike", {
               course_id: props.course_id,
@@ -84,7 +84,7 @@ const CardBrief = (props) => {
             });
           });
         } else {
-          setVote("Dislike removed");
+          setVote("Neutral");
           post("/api/updateuserscores", { course_id: props.course_id, vote: 0.5 }).then((res) => {
             post("/api/likeordislike", {
               course_id: props.course_id,

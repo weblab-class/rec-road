@@ -70,6 +70,7 @@ const [courses, setCourses] = useState()
             />
             {courses.map((class_dict) => 
               <CardBrief
+                userId={props.userId}
                 course_id={class_dict.course_id}
                 course_name={class_dict.course_name}
                 hours={class_dict.hours}
