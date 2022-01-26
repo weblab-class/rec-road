@@ -50,7 +50,6 @@ const [courses, setCourses] = useState()
   const [loaded, setLoaded] = useState(false)
   useEffect(()=>{
     get('/api/alliinteractedcourses').then(response=>{
-      //console.log(response)
       setCourses(response)
       setLoaded(true)
     })

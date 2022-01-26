@@ -23,7 +23,6 @@ const useCourseSearch = (pageNumber) => {
         });
         //setHasMore(res.data.docs.length > 0);
         setLoading(false);
-        //console.log(res.data)
       })
       .catch((e) => {
         if (axios.isCancel(e)) return;

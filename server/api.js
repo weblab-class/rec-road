@@ -49,8 +49,6 @@ router.get('/alliinteractedcourses', (req, res)=>{
     for (let i=0; i < courses.length; i++){
       const course_full = await Course.findOne({course_id:courses[i].course_id})
       course_full_list.push(course_full)
-      //console.log(course_full)
-      //console.log(courses)
     }
     return course_full_list
   }
@@ -113,7 +111,6 @@ router.get("/topscoreclasses", auth.ensureLoggedIn, (req, res)=>{
   const search10course = async (coursekeys) => {
     const course_list = [];
     for (let i=0; i < 10; i++){
-      console.log(coursekeys[i])
       const list_item = await Course.findOne({course_id:coursekeys[i]});
       course_list.push(list_item);
     };
@@ -144,13 +141,11 @@ router.post("/likeordislike", auth.ensureLoggedIn, (req, res)=>{
     user_id: req.user._id,
     course_like_neutral_dislike: req.body.course_like_neutral_dislike
   }
-  console.log(req.body.course_id)
   LikesDislikes.updateOne({course_id: req.body.course_id, user_id:req.user._id}, 
                             newLikeDislike, {upsert:true}).then((story) => res.send(story));
 })
 
 router.get("/likeordislike", auth.ensureLoggedIn, (req, res)=>{
-  console.log(req.query.course_id)
   LikesDislikes.find({course_id:req.query.course_id, user_id:req.user._id})
   .then((story) => res.send(story));
 })
@@ -211,7 +206,6 @@ router.post("/adjacencylists", (req, res) => {
 
 router.get("/existsuserscores", auth.ensureLoggedIn, (req, res) => {
   UserScores.countDocuments({user_id:req.user._id}).then((count) =>{
-    //console.log(count)
     res.send({existence:count})
   })
 })
@@ -228,19 +222,13 @@ router.post("/updateuserscores", auth.ensureLoggedIn, (req, res) => {
     const new_scores = [...old_doc[0].all_scores]
     CourseIndices.find({}).then((all_course_indices)=>{
       const all_indices = all_course_indices[0].all_course_id
-      //console.log(all_indices)
       Adjacencies.findOne({course_id:req.body.course_id}).then((base_course)=>{
           
           const all_neighbors = base_course.course_adjacencies.concat([req.body.course_id])
-          //console.log(all_neighbors)
           for (let i=0; i < all_neighbors.length; i++){
-            //console.log(all_neighbors[i])
             const actual_index = all_indices.indexOf(all_neighbors[i])
-            //console.log(new_scores[actual_index])
             new_scores[actual_index] = (new_scores[actual_index] + req.body.vote)/(new_scores[actual_index]+1.00)
-            //console.log(new_scores[actual_index])
           }
-          //console.log(all_neighbors)
           const updateDoc = {
             user_id: req.user._id,
             all_scores:new_scores
@@ -291,7 +279,6 @@ router.post("/course", (req, res) => {
 router.get("/courses", (req, res) => {
   // empty selector means get all documents
   Course.find({}).then((courses) => {
-    //console.log(courses.length)
     res.send(courses)});
 });
 
@@ -299,14 +286,12 @@ router.get("/courses", (req, res) => {
 router.get("/courseindices", (req, res) => {
   // empty selector means get all documents
   CourseIndices.find({}).then((index) => {
-    //console.log(index[0].all_course_id.length)
     res.send(index)});
 });
 
 router.get("/defaultscores", (req, res) => {
   // empty selector means get all documents
   DefaultScores.find({}).then((score) => {
-    //console.log(score[0].all_scores.length)
     res.send(score)});
 });
 
@@ -363,7 +348,6 @@ router.get("/stories", (req, res) => {
   // empty selector means get all documents
   
   Story.find({}).then((stories) => {
-  //console.log(typeof stories)
   res.send(stories)});
 
 });
@@ -378,44 +362,34 @@ router.get("/topfivecourses", (req, res) => {
 
 
   const selectTopFiveIndices = (scores) => {
-    //console.log(scores.length)
-    //console.log(scores.slice(0,30))
     const scores_copy = scores.slice()
     for (let i=0; i < scores.length; i++){
       if (scores_copy[i]===null){
         scores_copy[i] = 0.5
       }
     }
-    //console.log(scores_copy.slice(0,30))
-    //console.log(scores_copy.reduce(add, 0))
     const a_sum = scores_copy.reduce(add, 0)
 
     const probabilities = scores_copy.map(( a) => (a/a_sum))
     const cumsum_prob = probabilities.map(cumulativeSum)
     
-    //console.log(cumsum_prob.slice(0, 20))
-    //console.log(cumsum_prob)
     
     const top_idx = []
 
     loop1:
     for (let step=0; step<5; step++){
       let val_check = Math.random()
-      //console.log(val_check)
       let idx = 0
       loop2:
       for (let i=0; i < cumsum_prob.length; i++){
-        //console.log(val_check)
-        //console.log(cumsum_prob[i])
+
         if (cumsum_prob[i] > val_check){
           top_idx.push(idx)
           break loop2
         }
         idx = idx + 1
-        //console.log(idx)
       }
     }
-    //console.log(top_idx)
     return top_idx
   }
 
@@ -432,26 +406,19 @@ router.get("/topfivecourses", (req, res) => {
   }
  
   USERDB.find(filter).then((scores) => {
-    //console.log(scores)
     const top_indices = selectTopFiveIndices(scores[0].all_scores)
-    //console.log(top_indices)
-    //console.log(tyopeof top_indices)
     return top_indices
   }).then(top_indices => {
     CourseIndices.find({}).then((indices) =>{
-      //console.log(indices[0].all_course_id[top_indices[0]])
-      //console.log(typeof top_indices[0])
       console.log(top_indices.map((a)=>
         indices[0].all_course_id[a]
       ))
       return top_indices.map(a=>indices[0].all_course_id[a])
     }).then((course_ids) =>{
-        //console.log(course_ids)
         Course.find({course_id:course_ids[0]}).then(course_0 => {
           all_courses.push(course_0[0])
           Course.find({course_id:course_ids[1]}).then(course_1 =>{
             all_courses.push(course_1[0])
-            //console.log(all_courses)
             Course.find({course_id:course_ids[2]}).then(course_2 =>{
               all_courses.push(course_2[0])
               Course.find({course_id:course_ids[3]}).then(course_3 =>{
